@@ -1,5 +1,7 @@
 package com.gk.gestibank.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,10 +33,16 @@ public class ProviderController {
     //@ResponseBody
     public String listProviders(Model model) {
     	
-    	
-        model.addAttribute("providers", providerRepository.findAll());
+    	List<Provider> lp = (List<Provider>)providerRepository.findAll();
+    	if(lp.size() == 0) {
+    		
+    		lp = null;
+    	}
+        model.addAttribute("providers",lp);
         
-        return "provider/listProviders";
+       
+        
+        return "provider/listProvider";
         
         //List<Provider> lp = (List<Provider>)providerRepository.findAll();
         //System.out.println(lp);
