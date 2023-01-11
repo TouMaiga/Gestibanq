@@ -1,7 +1,5 @@
 package com.gk.gestibank.controllers;
 
-import java.sql.Date;
-import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
