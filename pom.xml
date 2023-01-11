@@ -8,10 +8,10 @@
 		<version>3.0.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.sip</groupId>
-	<artifactId>ams</artifactId>
+	<groupId>com.gk</groupId>
+	<artifactId>gestibank</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ams</name>
+	<name>gestibank</name>
 	<description>Projet de fin de formation</description>
 	<properties>
 		<java.version>17</java.version>
