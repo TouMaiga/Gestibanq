@@ -1,5 +1,7 @@
 package com.gk.gestibank.controllers;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,6 +65,9 @@ public class AgentController {
         	System.out.println(result);
             return "agent/addAgent";
         }
+        /*LocalDate ld = LocalDate.now();
+        Date d = new Date(System.currentTimeMillis());
+        agent.setDate(d);*/
         agentRepository.save(agent);
         return "redirect:list";
     }

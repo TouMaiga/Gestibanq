@@ -19,6 +19,11 @@
                 <div class="col-md-10">
                     <form action="#" th:action="@{/agent/add}" th:object="${agent}" method="post">
                         <div class="row">
+							
+							<div class="form-group col-md-8">
+                              <label for="matricule" class="col-form-label">Matricule</label> <input type="text" th:field="*{matricule}" class="form-control" id="matricule" placeholder="Matricule"> <span th:if="${#fields.hasErrors('matricule')}" th:errors="*{matricule}" class="text-danger"></span>
+                            </div>
+							
                             <div class="form-group col-md-8">
                               <label for="nom" class="col-form-label">Nom</label> <input type="text" th:field="*{nom}" class="form-control" id="nom" placeholder="Nom"> <span th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}" class="text-danger"></span>
                             </div>
@@ -37,9 +42,9 @@
                                 <label for="telephone" class="col-form-label">Téléphone</label> <input type="text" th:field="*{telephone}" class="form-control" id="telephone" placeholder="Telephone"> <span th:if="${#fields.hasErrors('telephone')}" th:errors="*{telephone}" class="text-danger"></span>
                             </div>
                             
-                           <!-- <div class="form-group col-md-8">
-                                <label for="date" class="col-form-label">Date</label> <input type="hidden" th:field="*{date}" class="form-control" id="date" placeholder="Date" > <span th:if="${#fields.hasErrors('date')}" th:errors="*{date}" class="text-danger"></span>
-                            </div>-->
+                            <div class="form-group col-md-8">
+                                <label for="date" class="col-form-label">Date</label> <input type="date" th:field="*{date}" class="form-control" id="date" placeholder="Date"  required> <span th:if="${#fields.hasErrors('date')}" th:errors="*{date}" class="text-danger"></span>
+                            </div>
 
                             <div class="col-md-6">
                                 <input type="submit" class="btn btn-primary" value="Ajouter un agent">

@@ -1,5 +1,7 @@
 package com.gk.gestibank.entities;
 
+import java.sql.Date;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,7 +15,12 @@ public class Agent {
 	    @GeneratedValue(strategy = GenerationType.AUTO)
 	    private long id;
 	
-	    @NotBlank(message = "Name is mandatory")
+		
+		@NotBlank(message = "Matricule is mandatory")
+		@Column(name = "matricule")
+		private String matricule;
+		
+		@NotBlank(message = "Name is mandatory")
 	    @Column(name = "nom")
 	    private String nom;
 	    
@@ -33,9 +40,9 @@ public class Agent {
 	    @Column(name = "telephone")
 	    private String telephone;
 	    
-	    /*@NotBlank(message = "Date is mandatory")
+	    //@NotBlank(message = "Date is mandatory")
 	    @Column(name = "date")
-	    private Date date;*/
+	    private Date date;
 	  	
 	    public Agent() {}
 	
@@ -63,22 +70,33 @@ public class Agent {
 			this.telephone = telephone;
 		}
 
-		/*public Date getDate() {
+		public Date getDate() {
 			return date;
 		}
 
 		public void setDate(Date date) {
 			
+			this.date = date;
 			
-			
-		}*/
+		}
+		
+	    public String getMatricule() {
+			return matricule;
+		}
 
-		public Agent(String nom, String prenom,String address, String email, String telephone) {	
+		public void setMatricule(String matricule) {
+			this.matricule = matricule;
+		}
+
+		public Agent(String matricule, String nom, String prenom,String address, String email, String telephone, Date date) {	
+			
+			this.matricule = matricule;
 	        this.nom = nom;
 	        this.prenom = prenom;
 	        this.address = address;
 	        this.email = email;
 	        this.telephone = telephone;
+	        this.date = date;
 	        
 	    }
 	

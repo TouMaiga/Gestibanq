@@ -19,8 +19,17 @@
                         
                         <input type="hidden" th:field="*{id}" />
                         <div class="row">
+							
+						    <div class="form-group col-md-6">
+                                <label for="matricule" class="col-form-label">Matricule</label> <input type="text" th:field="*{matricule}" class="form-control" id="matricule" placeholder="Matricule"> <span th:if="${#fields.hasErrors('matricule')}" th:errors="*{matricule}" class="text-danger"></span>
+                            </div>
+							
+							<div class="form-group col-md-6">
+                                <label for="prenom" class="col-form-label">Prénom</label> <input type="text" th:field="*{prenom}" class="form-control" id="prenom" placeholder="Prenom"> <span th:if="${#fields.hasErrors('prenom')}" th:errors="*{prenom}" class="text-danger"></span>
+                            </div>
+							
                             <div class="form-group col-md-6">
-                                <label for="name" class="col-form-label">Name</label> <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Name"> <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span>
+                                <label for="nom" class="col-form-label">Nom</label> <input type="text" th:field="*{nom}" class="form-control" id="nom" placeholder="Nom"> <span th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}" class="text-danger"></span>
                             </div>
                             <div class="form-group col-md-8">
                                 <label for="email" class="col-form-label">Email</label> <input type="text" th:field="*{email}" class="form-control" id="email" placeholder="Email"> <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></span>
@@ -29,6 +38,13 @@
                                 <label for="address" class="col-form-label">Address</label> <input type="text" th:field="*{address}" class="form-control" id="address" placeholder="address"> <span th:if="${#fields.hasErrors('address')}" th:errors="address" class="text-danger"></span>
                             </div>
 
+                            <div class="form-group col-md-8">
+                                <label for="telephone" class="col-form-label">Téléphone</label> <input type="text" th:field="*{telephone}" class="form-control" id="telephone" placeholder="Telephone"> <span th:if="${#fields.hasErrors('telephone')}" th:errors="*{telephone}" class="text-danger"></span>
+                            </div>
+                            
+                            <div class="form-group col-md-8">
+                                <label for="date" class="col-form-label">Date</label> <input type="date" th:field="*{date}" class="form-control" id="date" placeholder="Date"  required> <span th:if="${#fields.hasErrors('date')}" th:errors="*{date}" class="text-danger"></span>
+                            </div>
 
                             <div class="form-group col-md-8">
                                 <input type="submit" class="btn btn-primary" value="Modifier l'agent">

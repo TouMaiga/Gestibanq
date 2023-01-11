@@ -38,9 +38,12 @@
                                 </thead>
                                 <tbody>
                                     <tr th:each="agent : ${agents}">
-                                        <td th:text="${agent.name}"></td>
-                                        <td th:text="${agent.email}"></td>
+										<td th:text="${agent.matricule}"></td>
+                                        <td th:text="${agent.nom}"></td>
+                                        <td th:text="${agent.prenom}"></td>
                                         <td th:text="${agent.address}"></td>
+                                        <td th:text="${agent.telephone}"></td>
+                                        <td th:text="${agent.date}"></td>
                                         <td><a th:href="@{/agent/edit/{id}(id=${agent.id})}" class="btn btn-warning"><i class="fas fa-user-edit ml-2"></i></a></td>
                                         <td><a th:href="@{/agent/delete/{id}(id=${agent.id})}" class="btn btn-danger"><i class="fas fa-user-times ml-2"></i></a></td>
                                     </tr>
