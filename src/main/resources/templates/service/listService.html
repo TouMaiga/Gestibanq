@@ -39,13 +39,18 @@ body {
                                         <th>Titre</th>
                                         <th>Type</th>
                                         <th>Description</th>
+                                        <th>Modifier</th>
+                                        <th>Supprimer</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr th:each="service : ${services}">
                                         <td th:text="${service.titre}"></td>
                                         <td th:text="${service.type}"></td>
-                                        <td th:text="${service.description}"></td></tr>
+                                        <td th:text="${service.description}"></td>
+                                        <td><a th:href="@{/service/edit/{id}(id=${service.id})}" class="btn btn-warning"><i class="fas fa-user-edit ml-2"></i></a></td>
+                                        <td><a th:href="@{/service/delete/{id}(id=${service.id})}" class="btn btn-danger"><i class="fas fa-user-times ml-2"></i></a></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>

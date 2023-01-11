@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.gk.gestibank.entities.Service;
 
-public interface ServiceRepository extends CrudRepository<Service, Integer> {
+public interface ServiceRepository extends CrudRepository<Service, Long> {
 
 }

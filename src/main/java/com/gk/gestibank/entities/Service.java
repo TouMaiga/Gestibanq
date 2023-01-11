@@ -6,18 +6,22 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
-@Table(name="service")
+@Table(name = "service")
 public class Service {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private Integer id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+	
+	@NotBlank(message = "Un titre est requis")
 	@Column(name = "titre")
 	private String titre;
+	
 	@Column(name = "type")
 	private String type;
+	
 	@Column(name = "description")
 	private String description;
 
@@ -29,19 +33,18 @@ public class Service {
 
 	}
 
-	public Service(Integer id, String titre, String type, String description) {
+	public Service(String titre, String type, String description) {
 		super();
-		this.id = id;
 		this.titre = titre;
 		this.type = type;
 		this.description = description;
 	}
 
-	public Integer getId() {
+	public long getId() {
 		return id;
 	}
-
-	public void setId(Integer id) {
+	
+	public void setId(long id) {
 		this.id = id;
 	}
 
