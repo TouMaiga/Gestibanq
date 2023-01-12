@@ -1,57 +1,150 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Modifier une configuration</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+	<div th:replace="fragments/header :: header" />
 </head>
-<body>
-    <div class="container my-5">
-        <h3> Modifier une configuration</h3>
-        <div class="card">
-            <div class="card-body">
-                <div class="col-md-8">
-                    <form action="#" th:action="@{/config/update}" th:object="${config}" method="post">
-                        
-                        <input type="hidden" th:field="*{id}" />
-                        <div class="row">
-							
-						    <div class="form-group col-md-8">
-                              <label for="about" class="col-form-label">A propos</label> <input type="text" th:field="*{about}" class="form-control" id="about" placeholder="A propos"> <span th:if="${#fields.hasErrors('about')}" th:errors="*{about}" class="text-danger"></span>
-                            </div>
-							
-                            <div class="form-group col-md-8">
-                              <label for="logo" class="col-form-label">Logo</label> <input type="file" th:field="*{logo}" class="form-control" id="logo" placeholder="Logo"> <span th:if="${#fields.hasErrors('logo')}" th:errors="*{logo}" class="text-danger"></span>
-                            </div>
-                            <div class="form-group col-md-8">
-                                <label for="email" class="col-form-label">Email</label> <input type="text" th:field="*{mail}" class="form-control" id="mail" placeholder="Email"> <span th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}" class="text-danger"></span>
-                            </div>
 
-							<div class="form-group col-md-8">
-                                <label for="adresse" class="col-form-label">Adresse</label> <input type="text" th:field="*{adresse}" class="form-control" id="adresse" placeholder="adresse"> <span th:if="${#fields.hasErrors('adresse')}" th:errors="*{adresse}" class="text-danger"></span>
-                            </div>
-                            
-                            <div class="form-group col-md-8">
-                                <label for="telephone" class="col-form-label">Téléphone</label> <input type="text" th:field="*{telephone}" class="form-control" id="telephone" placeholder="Telephone"> <span th:if="${#fields.hasErrors('telephone')}" th:errors="*{telephone}" class="text-danger"></span>
-                            </div>
-                            
-                            <div class="form-group col-md-8">
-                                <label for="isActive" class="col-form-label">Actif</label> <input type="checkbox" th:field="*{isActive}" class="form-control" id="isActive" placeholder="" > <span th:if="${#fields.hasErrors('isActive')}" th:errors="*{isActive}" class="text-danger"></span>
-                            </div>
+<body id="page-top">
 
-                            <div class="form-group col-md-8">
-                                <input type="submit" class="btn btn-primary" value="Modifier la configuration">
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+	<!-- Page Wrapper -->
+	<div id="wrapper">
+
+		<div th:replace="fragments/sidebar :: sidebar" />
+
+		<!-- Content Wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
+
+			<!-- Main Content -->
+			<div id="content">
+
+				<!-- Topbar -->
+				<div th:replace="fragments/navbar :: navbar" />
+				<!-- End of Topbar -->
+
+				<!-- Begin Page Content -->
+				<div class="container-fluid">
+
+					<!-- Page Heading -->
+					<div class="d-sm-flex align-items-center justify-content-between mb-4">
+						<h1 class="h3 mb-0 text-gray-800">Modifier une configuration</h1>
+
+					</div>
+
+					<!-- Content Row -->
+					<div class="row">
+						<div class="container my-5">
+							<h3> Modifier une configuration</h3>
+							<div class="card">
+								<div class="card-body">
+									<div class="col-md-8">
+										<form action="#" th:action="@{/config/update}" th:object="${config}"
+											method="post" enctype="multipart/form-data">
+
+											<input type="hidden" th:field="*{id}" />
+											<div class="row">
+
+												<div class="form-group col-md-8">
+													<label for="about" class="col-form-label">A propos</label> <input
+														type="text" th:field="*{about}" class="form-control" id="about"
+														placeholder="A propos"> <span
+														th:if="${#fields.hasErrors('about')}" th:errors="*{about}"
+														class="text-danger"></span>
+												</div>
+
+												<div class="form-group col-md-8">
+													<label for="logo" class="col-form-label">Logo</label> <input
+														type="file" th:field="*{logo}" class="form-control" id="logo"
+														placeholder="Logo" name="files" multiple> <span th:if="${#fields.hasErrors('logo')}"
+														th:errors="*{logo}" class="text-danger"></span>
+												</div>
+												<div class="form-group col-md-8">
+													<label for="email" class="col-form-label">Email</label> <input
+														type="text" th:field="*{mail}" class="form-control" id="mail"
+														placeholder="Email"> <span th:if="${#fields.hasErrors('mail')}"
+														th:errors="*{mail}" class="text-danger"></span>
+												</div>
+
+												<div class="form-group col-md-8">
+													<label for="adresse" class="col-form-label">Adresse</label> <input
+														type="text" th:field="*{adresse}" class="form-control"
+														id="adresse" placeholder="adresse"> <span
+														th:if="${#fields.hasErrors('adresse')}" th:errors="*{adresse}"
+														class="text-danger"></span>
+												</div>
+
+												<div class="form-group col-md-8">
+													<label for="telephone" class="col-form-label">Téléphone</label>
+													<input type="text" th:field="*{telephone}" class="form-control"
+														id="telephone" placeholder="Telephone"> <span
+														th:if="${#fields.hasErrors('telephone')}"
+														th:errors="*{telephone}" class="text-danger"></span>
+												</div>
+
+												<div class="form-group col-md-8">
+													<label for="isActive" class="col-form-label">Actif</label> <input
+														type="checkbox" th:field="*{isActive}" class="form-control"
+														id="isActive" placeholder=""> <span
+														th:if="${#fields.hasErrors('isActive')}" th:errors="*{isActive}"
+														class="text-danger"></span>
+												</div>
+
+												<div class="form-group col-md-8">
+													<input type="submit" class="btn btn-primary"
+														value="Modifier la configuration">
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+
+
+
+					</div>
+					<!-- /.container-fluid -->
+
+				</div>
+				<!-- End of Main Content -->
+
+				<!-- Footer -->
+				<div th:replace="fragments/footer :: footer" />
+				<!-- End of Footer -->
+
+			</div>
+			<!-- End of Content Wrapper -->
+
+		</div>
+		<!-- End of Page Wrapper -->
+
+		<!-- Scroll to Top Button-->
+		<a class="scroll-to-top rounded" href="#page-top">
+			<i class="fas fa-angle-up"></i>
+		</a>
+
+		<!-- Logout Modal-->
+		<div th:replace="fragments/logoutmodal :: logoutmodal" />
+
+		<!-- Bootstrap core JavaScript-->
+		<script th:src="@{/back/vendor/jquery/jquery.min.js}"></script>
+		<script th:src="@{/back/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+		<!-- Core plugin JavaScript-->
+		<script th:src="@{/back/vendor/jquery-easing/jquery.easing.min.js}"></script>
+
+		<!-- Custom scripts for all pages-->
+		<script th:src="@{/back/js/sb-admin-2.min.js}"></script>
+
+		<!-- Page level plugins -->
+		<script th:src="@{/back/vendor/chart.js/Chart.min.js}"></script>
+
+		<!-- Page level custom scripts -->
+		<script th:src="@{/back/js/demo/chart-area-demo.js}"></script>
+		<script th:src="@{/back/js/demo/chart-pie-demo.js}"></script>
+
 </body>
 
 </html>
