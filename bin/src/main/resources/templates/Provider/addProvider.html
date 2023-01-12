@@ -19,6 +19,11 @@
                 <div class="col-md-10">
                     <form action="#" th:action="@{/provider/add}" th:object="${provider}" method="post">
                         <div class="row">
+							
+							<div class="form-group col-md-8">
+                              <label for="matricule" class="col-form-label">Matricule</label> <input type="text" th:field="*{matricule}" class="form-control" id="matricule" placeholder="Matricule"> <span th:if="${#fields.hasErrors('matricule')}" th:errors="*{matricule}" class="text-danger"></span>
+                            </div>
+							
                             <div class="form-group col-md-8">
                                 <label for="name" class="col-form-label">Name</label> <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Name"> <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span>
                             </div>
@@ -29,6 +34,17 @@
 <div class="form-group col-md-8">
                                 <label for="address" class="col-form-label">Address</label> <input type="text" th:field="*{address}" class="form-control" id="address" placeholder="address"> <span th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="text-danger"></span>
                             </div>
+<<<<<<< HEAD:bin/src/main/resources/templates/Provider/addProvider.html
+=======
+                            
+                            <div class="form-group col-md-8">
+                                <label for="telephone" class="col-form-label">Téléphone</label> <input type="text" th:field="*{telephone}" class="form-control" id="telephone" placeholder="Telephone"> <span th:if="${#fields.hasErrors('telephone')}" th:errors="*{telephone}" class="text-danger"></span>
+                            </div>
+                            
+                            <div class="form-group col-md-8">
+                                <label for="date" class="col-form-label">Date</label> <input type="date" th:field="*{date}" class="form-control" id="date" placeholder="Date"  required> <span th:if="${#fields.hasErrors('date')}" th:errors="*{date}" class="text-danger"></span>
+                            </div>
+>>>>>>> 490b2363387dda573becfdef86c36369a09e8e1f:src/main/resources/templates/agent/addAgent.html
 
                             <div class="col-md-6">
                                 <input type="submit" class="btn btn-primary" value="Add Provider">
