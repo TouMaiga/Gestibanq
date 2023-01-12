@@ -1,5 +1,6 @@
 package com.gk.gestibank.controllers;
 
+<<<<<<< HEAD
 
 
 import org.springframework.stereotype.Controller;
@@ -47,4 +48,32 @@ public class DashboardController {
        
         
 	
+=======
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class DashboardController {
+	
+
+    @GetMapping("/")
+    public String accueil(Model model) {
+        return "dashboard/index";  
+    }
+    
+    @GetMapping("/admin")
+    public String dashbaordAdmin(Model model) {
+        return "dashboard/admin";  
+    }
+    @GetMapping("/agent")
+    public String dashbaordAgent(Model model) {
+        return "dashboard/agent";  
+    }
+    @GetMapping("/client")
+    public String dashbaordAClient(Model model) {
+        return "dashboard/client";  
+    }
+
+>>>>>>> 9128042ab65a7356e3203f9c359b2348c4c4192e
 }
