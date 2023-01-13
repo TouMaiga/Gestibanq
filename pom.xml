@@ -58,6 +58,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>gestiBank</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
