@@ -48,6 +48,7 @@
 									<th>Adresse</th>
 									<th>Téléphone</th>
 									<th>Actif</th>
+									<th>Détails</th>
 									<th>Modifier</th>
 									<th>Supprimer</th>
 								</tr>
@@ -60,6 +61,7 @@
 									<td th:text="${config.adresse}"></td>
 									<td th:text="${config.telephone}"></td>
 									<td th:text="${config.isActive} ? 'Oui' : 'Non'"></td>
+									<td><a th:href="@{/config/show/{id}(id=${config.id})}" class="btn btn-primary">Détails<i class="fas fa-user-show ml-2"></i></a></td>
 									<td><a th:href="@{/config/edit/{id}(id=${config.id})}" class="btn btn-warning"><i class="fas fa-user-edit ml-2"></i></a></td>
 									<td><a th:href="@{/config/delete/{id}(id=${config.id})}" class="btn btn-danger"><i class="fas fa-user-times ml-2"></i></a></td>
 								</tr>

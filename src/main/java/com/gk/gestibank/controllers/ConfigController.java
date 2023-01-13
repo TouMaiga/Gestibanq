@@ -121,6 +121,14 @@ public class ConfigController {
 	        
 	        return "config/updateConfig";
 	    }
+	    
+	    @GetMapping("show/{id}")
+	    public String showConfigDetails(@PathVariable("id") long id, Model model)
+	    {
+	    Config config = configRepository.findById(id).orElseThrow(()->new IllegalArgumentException("Invalid config Id:" + id));
+	    model.addAttribute("config", config);
+	    return "config/showConfig";
+	    }
 
 
 	    
