@@ -20,7 +20,7 @@ import jakarta.validation.Valid;
         @RequestMapping("/message/")
 public class MessageController {
 	private final MessageRepository messageRepository;
-
+    
 	@Autowired
 	public MessageController(MessageRepository messageRepository) {
 		this.messageRepository = messageRepository;
@@ -44,10 +44,9 @@ public class MessageController {
 	    }
 	  
 	  
-	  
 		  @GetMapping("add") 
 		  public String showAddMessageForm(Model model) {
-		  Message message = new Message(); 
+		  Message message = new Message() ; 
 		  // object dont la valeur des attributs par defaut
 		  model.addAttribute("message", message); 
 		  return "message/addMessage"; }

@@ -5,7 +5,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" th:href=@{/admin}>
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -35,15 +35,14 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Gestion du front</span>
+                    <span>Gestion de service </span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Configuration du front</h6>
-                        <a class="collapse-item" href="#">Services</a>
-                        <a class="collapse-item" href="#">Actualités</a>
-                        <a class="collapse-item" href="#">Messages</a>
-                        <a class="collapse-item" href="#">Configuration</a>
+                      
+                        <a class="collapse-item" th:href="@{/service/add}">Ajouter</a>
+                         <a class="collapse-item" th:href="@{/service/list}">Liste</a>
+                    
                     </div>
                 </div>
             </li>
@@ -85,14 +84,30 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilitiesArticle"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
-                    <span>Gestion  Article</span>
+                    <span>Gestion de message </span>
                 </a>
                 <div id="collapseUtilitiesArticle" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Articles GK</h6>
-                        <a class="collapse-item" href="#">Ajouter</a>
-                        <a class="collapse-item" href="#">Liste</a>
+                        <h6 class="collapse-header">Message GK</h6>
+                         <a class="collapse-item" th:href="@{/message/add}">Ajouter</a>
+                          <a class="collapse-item" th:href="@{/message/list}">Liste</a>
+                     </div>
+                </div>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilitiesConfig"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Configuration </span>
+                </a>
+                <div id="collapseUtilitiesConfig" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Configuration GK</h6>
+                         <a class="collapse-item" th:href="@{/config/add}">Ajouter</a>
+                          <a class="collapse-item" th:href="@{/config/list}">Liste</a>
                      </div>
                 </div>
             </li>

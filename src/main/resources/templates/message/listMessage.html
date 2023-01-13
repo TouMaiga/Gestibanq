@@ -27,7 +27,9 @@
                                 <thead>
                                     <tr>
                                         
-                                        <th>Auteur</th>
+                                        <th>FirstName</th>
+                                        <th>LarstName</th>
+                                        <th>Email</th>
                                         <th>Sujet</th>
                                         <th>Contenu</th> 
                                         <th>Reponse</th>                                       
@@ -37,10 +39,13 @@
                                 </thead>
                                 <tbody>
                                     <tr th:each="message : ${messages}">
-                                        <td th:text="${message.auteur}"></td>
+                                        <td th:text="${message.firstname}"></td>
+                                        <td th:text="${message.lastname}"></td>
+                                        <td th:text="${message.email}"></td>
                                         <td th:text="${message.sujet}"></td>
                                         <td th:text="${message.contenu}"></td>
-                                        <td th:text="${message.reponse}"></td>                                        <td><a th:href="@{/message/edit/{id}(id=${message.id})}" class="btn btn-warning"><i class="fas fa-user-edit ml-2"></i></a></td>
+                                        <td th:text="${message.reponse}"></td>                                        
+                                        <td><a th:href="@{/message/edit/{id}(id=${message.id})}" class="btn btn-warning"><i class="fas fa-user-edit ml-2"></i></a></td>
                                         <td><a th:href="@{/message/delete/{id}(id=${message.id})}" class="btn btn-danger"><i class="fas fa-user-times ml-2"></i></a></td>
                                     </tr>
                                 </tbody>

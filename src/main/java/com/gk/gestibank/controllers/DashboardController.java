@@ -5,12 +5,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.gk.gestibank.repositories.MessageRepository;
+
 @Controller
 public class DashboardController {
 	
 
     @GetMapping("/")
     public String accueil(Model model) {
+    
         return "dashboard/index";  
     }
     
@@ -26,5 +29,6 @@ public class DashboardController {
     public String dashbaordAClient(Model model) {
         return "dashboard/client";  
     }
+    
 
 }
