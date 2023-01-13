@@ -119,6 +119,8 @@ public class ConfigController {
 	        
 	        model.addAttribute("config", config);
 	        
+	        
+	        
 	        return "config/updateConfig";
 	    }
 	    
@@ -132,12 +134,39 @@ public class ConfigController {
 
 
 	    
-	    @PostMapping("update")
-	    public String updateConfig(@Valid Config config, BindingResult result, Model model) {
+	    @PostMapping("edit/{id}")
+	    public String updateConfig(@PathVariable("id") long id, @Valid Config config, BindingResult result, Model model, @RequestParam("files") MultipartFile[] files) {
 	    	
+	    	 if (result.hasErrors()) {
+	         	 config.setId(id);
+	             return "config/updateConfig";
+	         }
+	         //System.out.println("image = " +article.getPicture());
+	     	
+	     	/// part upload file
+	     
+	     		
+	     	StringBuilder fileName = new StringBuilder();
+	     	MultipartFile file = files[0];
+	     	//System.out.println(file.isEmpty());
+	     	if(!file.isEmpty()) {
+	     	Path fileNameAndPath = Paths.get(uploadDirectory, file.getOriginalFilename());
+	     	
+	     	fileName.append(file.getOriginalFilename());
+	 		  try {
+	 			Files.write(fileNameAndPath, file.getBytes());
+	 		} catch (IOException e) {
+	 			e.printStackTrace();
+	 		}
+	 		  config.setLogo(fileName.toString());
+	     	}
+	 		
+	     	
+	     	// Fin Upload file
 	    	
+	
 	    	configRepository.save(config);
-	    	return"redirect:list";
+	    	return"redirect:../list";
 	    	
 	    }
 
