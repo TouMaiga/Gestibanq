@@ -980,27 +980,26 @@
           <div class="col-md-12 mb-5">
 
             
-
-            <form action="#" class="p-5 bg-white">
+			<form action="#" th:action="@{/message/add}" th:object="${message}" method="post" class="p-5 bg-white">
               
               <h2 class="h4 text-black mb-5">Contact Form</h2> 
 
               <div class="row form-group">
                 <div class="col-md-6 mb-3 mb-md-0">
                   <label class="text-black" for="fname">First Name</label>
-                  <input type="text" id="fname" class="form-control">
+                  <input type="text" th:field="*{auteur}" id="fname" class="form-control">
                 </div>
-                <div class="col-md-6">
+                <!--<div class="col-md-6">
                   <label class="text-black" for="lname">Last Name</label>
                   <input type="text" id="lname" class="form-control">
-                </div>
+                </div>-->
               </div>
 
               <div class="row form-group">
                 
                 <div class="col-md-12">
                   <label class="text-black" for="email">Email</label> 
-                  <input type="email" id="email" class="form-control">
+                  <input type="email" id="email" class="form-control" th:field="*{email}">
                 </div>
               </div>
 
@@ -1008,14 +1007,14 @@
                 
                 <div class="col-md-12">
                   <label class="text-black" for="subject">Subject</label> 
-                  <input type="subject" id="subject" class="form-control">
+                  <input type="text" th:field="*{sujet}" id="subject" class="form-control">
                 </div>
               </div>
 
               <div class="row form-group">
                 <div class="col-md-12">
                   <label class="text-black" for="message">Message</label> 
-                  <textarea name="message" id="message" cols="30" rows="7" class="form-control" placeholder="Write your notes or questions here..."></textarea>
+                  <textarea th:field="*{contenu}" id="message" cols="30" rows="7" class="form-control" placeholder="Write your notes or questions here..."></textarea>
                 </div>
               </div>
 
