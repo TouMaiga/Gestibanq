@@ -34,14 +34,14 @@ public class AgentController {
     public String listAgents(Model model) {
     	
     	List<Agent> lp = (List<Agent>)agentRepository.findAll();
+    	long nbAgents =  agentRepository.count();
     	if(lp.size() == 0) {
     		
     		lp = null;
     	}
         model.addAttribute("agents",lp);
-        
-       
-        
+        model.addAttribute("nbAgents", nbAgents);
+      
         return "agent/listAgents";
         
         //List<Provider> lp = (List<Provider>)providerRepository.findAll();
