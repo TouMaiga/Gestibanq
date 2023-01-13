@@ -27,10 +27,10 @@
                             <table class="table table-striped table-responsive-md">
                                 <thead>
                                     <tr>
-                                        
                                         <th>Name</th>
-                                        <th>Contenu</th>                                        
-                                          <th>Edit</th>
+                                        <th>Contenu</th>
+                                        <th>Détails</th>                                      
+                                      	<th>Edit</th>
                                         <th>Delete</th>
                                     </tr>
                                 </thead>
@@ -38,6 +38,7 @@
                                     <tr th:each="actuality : ${actualities}">
                                         <td th:text="${actuality.name}"></td>
                                         <td th:text="${actuality.contenu}"></td>
+                                        <td><a th:href="@{/actuality/show/{id}(id=${actuality.id})}" class="btn btn-primary">Détails<i class="fas fa-user-show ml-2"></i></a></td>
                                         <td><a th:href="@{/actuality/edit/{id}(id=${actuality.id})}" class="btn btn-warning"><i class="fas fa-user-edit ml-2"></i></a></td>
                                         <td><a th:href="@{/actuality/delete/{id}(id=${actuality.id})}" class="btn btn-danger"><i class="fas fa-user-times ml-2"></i></a></td>
                                     </tr>

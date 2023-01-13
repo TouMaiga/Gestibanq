@@ -17,33 +17,36 @@
         <div class="card">
             <div class="card-body">
                 <div class="col-md-10">
-                    <form action="#" th:action="@{/actuality/add}" th:object="${actuality}" method="post">
+                    <form action="#" th:action="@{/actuality/add}" th:object="${actuality}" method="post" enctype="multipart/form-data">
                         <div class="row">
                             <div class="form-group col-md-8">
                                 <label for="name" class="col-form-label">Name</label> <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Name"> <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span>
                             </div>
 
-     
-<div class="form-group col-md-8">
-
-<label for="contenu" class="col-form-label">Contenu</label> 
-                                
-           
-           <textarea  th:field="*{contenu}" class="form-control" id="contenu" placeholder="contenu"> </textarea>
-           <span th:if="${#fields.hasErrors('contenu')}" th:errors="*{contenu}" class="text-danger"></span> 
-                            </div>
-                            
-                            <div class="col-md-6">
-                                <input type="submit" class="btn btn-primary" value="Add Actuality">
-                            </div>
-
-                            <div class="form-group col-md-8"></div>
-
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+	     
+	<div class="form-group col-md-8">
+	
+	<label for="contenu" class="col-form-label">Contenu</label> 
+	       <textarea  th:field="*{contenu}" class="form-control" id="contenu" placeholder="contenu"> </textarea>
+	      <span th:if="${#fields.hasErrors('contenu')}" th:errors="*{contenu}" class="text-danger"></span> 
+	 </div>
+  	<div class="form-group col-md-8">
+		<label for="logo" class="col-form-label">Logo</label> 
+		<input type="file" class="form-control" id="logo" placeholder="Logo" name="files" multiple>
+		<span th:if="${#fields.hasErrors('logo')}" th:errors="*{logo}" class="text-danger"></span>
+	</div>
+	                            
+    <div class="col-md-6">
+        <input type="submit" class="btn btn-primary" value="Add Actuality">
+    </div>
+	
+    <div class="form-group col-md-8"></div>
+	
+	                        </div>
+	                    </form>
+	                </div>
+	            </div>
+	        </div>
     </div>
 </body>
 
