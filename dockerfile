@@ -1,5 +1,5 @@
 # Java 8
-FROM openjdk:8-jdk-alpine
+FROM openjdk:17-jdk-alpine
 
 # Refer to Maven build -> finalName
 ARG JAR_FILE=target/gestiBank.jar
