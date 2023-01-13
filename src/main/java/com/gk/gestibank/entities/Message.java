@@ -13,7 +13,7 @@ import jakarta.validation.constraints.NotBlank;
 
 public class Message {
 
-		/*@Id
+		@Id
 	    @GeneratedValue(strategy = GenerationType.AUTO)
 	    private long id;
 	    
@@ -42,10 +42,14 @@ public class Message {
 	    @Column(name = "reponse")
 	    private String reponse;
 
-		
 
+	    public Message() {}
 
-		public Message() {
+		public Message(long id, Date date, @NotBlank(message = "FirstName is mandatory") String firstname,
+				@NotBlank(message = "LastName is mandatory") String lastname,
+				@NotBlank(message = "Email is mandatory") String email,
+				@NotBlank(message = "Sujet is mandatory") String sujet,
+				@NotBlank(message = "Contenu is mandatory") String contenu, String reponse) {
 			super();
 			this.id = id;
 			this.date = date;
@@ -124,11 +128,11 @@ public class Message {
 
 		public void setReponse(String reponse) {
 			this.reponse = reponse;
-		}*/
+		}
 	    
 	   
 
-	@Id
+/*	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
@@ -223,6 +227,6 @@ public class Message {
 		this.reponse = reponse;
 		this.contenu = contenu;
 		this.email = email;
-	}
+	}*/
 
 }
