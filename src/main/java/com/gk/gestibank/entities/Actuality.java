@@ -19,12 +19,15 @@ import jakarta.persistence.GeneratedValue;
 		    @Column(name = "contenu")
 		    private String contenu;
 		    
+		    private String logo;
+		    
 	
 		    public Actuality() {}
 		
-		    public Actuality (String name, String contenu) {
+		    public Actuality (String name, String contenu,String logo) {
 		        this.name = name;
 		        this.contenu = contenu;
+		        this.logo = logo;
 		       
 		    }
 
@@ -52,9 +55,13 @@ import jakarta.persistence.GeneratedValue;
 				this.contenu = contenu;
 			}
 
-			
-		   
-		    
+			public String getLogo() {
+				return logo;
+			}
+
+			public void setLogo(String logo) {
+				this.logo = logo;
+			}
 		    
 	}
 

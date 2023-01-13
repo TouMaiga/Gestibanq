@@ -70,10 +70,10 @@
                   <a href="#about-section" class="nav-link"> Compte</a>
                   <ul class="dropdown">
                     <li><a href="#team-section" class="nav-link">Ouverture </a></li>
-                    <li><a href="#pricing-section" class="nav-link"> Carte bancaire </a></li>
-                    <li><a href="#faq-section" class="nav-link">Mes documents </a></li>
-                    <li><a href="#gallery-section" class="nav-link"> RIB </a></li>
-                    <li><a href="#services-section" class="nav-link">maimouna </a></li>
+                    <li><a href="#pricing-section" class="nav-link"> Tarifs </a></li>
+                    <li><a href="#faq-section" class="nav-link">Documents </a></li>
+                    <li><a href="#gallery-section" class="nav-link"> Agents  </a></li>
+                    <li><a href="#services-section" class="nav-link"> Services </a></li>
                    
                     <li class="has-children">
                       <a href="#">More Links</a>
@@ -576,19 +576,19 @@
           </div>
         </div>
         <div class="row align-items-stretch">
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up">
+          <div th:each="service : ${services}" class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up">
             <div class="unit-4">
               <div class="unit-4-icon">
                 <img src="images/flaticon-svg/svg/001-wallet.svg" alt="Free Website Template by Free-Template.co" class="img-fluid w-25 mb-4">
               </div>
               <div>
-                <h3>Business Consulting</h3>
-                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                <h3 th:text="${service.titre}"></h3>
+                <p th:text="${service.description}"></p>
                 <p><a href="#">Learn More</a></p>
               </div>
             </div>
           </div>
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="100">
+         <!-- <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="100">
             <div class="unit-4">
               <div class="unit-4-icon">
                 <img src="images/flaticon-svg/svg/006-credit-card.svg" alt="Free Website Template by Free-Template.co" class="img-fluid w-25 mb-4">
@@ -649,7 +649,7 @@
                 <p><a href="#">Learn More</a></p>
               </div>
             </div>
-          </div>
+          </div>-->
 
         </div>
       </div>
@@ -905,14 +905,14 @@
         </div>
 
         <div class="row">
-          <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="">
+          <div th:each="actuality : ${actualities}" class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="">
             <div class="h-entry">
               <a href="single.html">
                 <img src="images/img_1.jpg" alt="Image" class="img-fluid">
               </a>
-              <h2 class="font-size-regular"><a href="#">A Basic Guide to Starting a Franchise in the Philippines</a></h2>
+              <h2 th:text="${actuality.name}" class="font-size-regular"><a href="#"></a></h2>
               <div class="meta mb-4">Ham Brook <span class="mx-2">&bullet;</span> Jan 18, 2019<span class="mx-2">&bullet;</span> <a href="#">News</a></div>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus eligendi nobis ea maiores sapiente veritatis reprehenderit suscipit quaerat rerum voluptatibus a eius.</p>
+              <p th:text="${actuality.contenu}"></p>
               <p><a href="#">Continue Reading...</a></p>
             </div> 
           </div>
@@ -980,10 +980,46 @@
           <div class="col-md-12 mb-5">
 
             
-           
-			  
-          <div class="col-12 text-center">
-           <form action="#" th:action="@{/message/add}" th:object="${message}" method="post">
+
+			<form action="#" th:action="@{/message/add}" th:object="${message}" method="post" class="p-5 bg-white">
+              
+              <h2 class="h4 text-black mb-5">Contact Form</h2> 
+
+              <div class="row form-group">
+                <div class="col-md-6 mb-3 mb-md-0">
+                  <label class="text-black" for="fname">First Name</label>
+                  <input type="text" th:field="*{auteur}" id="fname" class="form-control">
+                </div>
+                <!--<div class="col-md-6">
+                  <label class="text-black" for="lname">Last Name</label>
+                  <input type="text" id="lname" class="form-control">
+                </div>-->
+              </div>
+
+              <div class="row form-group">
+                
+                <div class="col-md-12">
+                  <label class="text-black" for="email">Email</label> 
+                  <input type="email" id="email" class="form-control" th:field="*{email}">
+                </div>
+              </div>
+
+              <div class="row form-group">
+                
+                <div class="col-md-12">
+                  <label class="text-black" for="subject">Subject</label> 
+                  <input type="text" th:field="*{sujet}" id="subject" class="form-control">
+                </div>
+              </div>
+
+              <div class="row form-group">
+                <div class="col-md-12">
+                  <label class="text-black" for="message">Message</label> 
+                  <textarea th:field="*{contenu}" id="message" cols="30" rows="7" class="form-control" placeholder="Write your notes or questions here..."></textarea>
+                </div>
+              </div>
+
+
               <div class="row form-group">
                 <div class="col-md-12">
                   <input type="submit" value="Accéder au formulaire de contact" class="btn btn-primary btn-md text-white">

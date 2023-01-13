@@ -24,6 +24,9 @@ public class Service {
 	
 	@Column(name = "description")
 	private String description;
+	
+	@Column(name = "logo")
+	private String logo;
 
 	// private Agent agent; // un service est fait par un agent
 
@@ -70,6 +73,14 @@ public class Service {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getLogo() {
+		return logo;
+	}
+
+	public void setLogo(String logo) {
+		this.logo = logo;
 	}
 
 }
