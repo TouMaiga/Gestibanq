@@ -62,8 +62,7 @@
 											<tbody>
 												<tr th:each="config : ${configs}">
 													<td th:text="${config.about}"></td>
-													<td><img alt="Image" th:src="@{'/uploads/'+ ${config.logo}}"
-															width="150" height="150" /></td>
+													<td><img alt="Image" th:src="@{'/uploads/'+ ${config.logo}}" width="150" height="150" /></td>
 													<td th:text="${config.mail}"></td>
 													<td th:text="${config.adresse}"></td>
 													<td th:text="${config.telephone}"></td>
