@@ -30,11 +30,11 @@
 				<div th:replace="fragments/navbar :: navbar" />
 				<!-- End of Topbar -->
 				<div class="container my-5">
-					<h3> Ajouter un utilisateur </h3>
+					<h3> Modifier un utilisateur </h3>
 					<div class="card">
 						<div class="card-body">
 							<div class="col-md-10">
-								<form action="#" th:action="@{/user/add}" th:object="${user}" method="post">
+								<form action="#" th:action="@{/user/update}" th:object="${user}" method="post">
 									<div class="row">
 										<div class="form-group col-md-8">
 
@@ -70,7 +70,6 @@
 										</div>
 
 										<div class="form-group col-md-8">
-										
 											<div class="custom-control custom-radio custom-control-inline">
 												<input type="radio" id="option1" class="custom-control-input" value="1"
 													th:field="*{active}">
@@ -84,19 +83,8 @@
 
 										</div>
 										
-										<!--
-										<div class="form-group col-md-8">
-											<label for="role" class="col-form-label">Roles</label> 
-											<select id="role" th:field="*{role}">
-												<option th:each="role : ${roles}"
-														th:value="${{role.role}}"
-														th:text="${role.role}">
-													Roles
-												</option>
-											</select>
-											<span th:if="${#fields.hasErrors('role')}" th:errors="*{role}" class="text-danger"></span>
-										</div>
-											-->
+										
+
 										<div class="col-md-6">
 											<input type="submit" class="btn btn-primary" value="Ajouter">
 										</div>
