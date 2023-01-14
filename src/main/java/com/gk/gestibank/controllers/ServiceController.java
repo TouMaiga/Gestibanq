@@ -58,16 +58,7 @@ public class ServiceController {
 			return "service/addService";
 		}
 
-		StringBuilder fileName = new StringBuilder();
-		MultipartFile file = files[0];
-		Path fileNameAndPath = Paths.get(uploadDirectory, file.getOriginalFilename());
-		fileName.append(file.getOriginalFilename());
-		try {
-			Files.write(fileNameAndPath, file.getBytes());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		service.setLogo(fileName.toString());
+		addLogo(service, files);
 
 		serviceRepository.save(service);
 		return "redirect:list";
@@ -84,7 +75,10 @@ public class ServiceController {
 	}
 
 	@PostMapping("update")
-	public String updateService(@Valid Service service, BindingResult result, Model model) {
+	public String updateService(@Valid Service service, BindingResult result, Model model,
+			@RequestParam("files") MultipartFile[] files) {
+
+		addLogo(service, files);
 
 		serviceRepository.save(service);
 		return "redirect:list";
@@ -107,5 +101,18 @@ public class ServiceController {
 		serviceRepository.delete(service);
 
 		return "redirect:../list";
+	}
+	
+	private void addLogo(Service service, MultipartFile[] files) {
+		StringBuilder fileName = new StringBuilder();
+		MultipartFile file = files[0];
+		Path fileNameAndPath = Paths.get(uploadDirectory, file.getOriginalFilename());
+		fileName.append(file.getOriginalFilename());
+		try {
+			Files.write(fileNameAndPath, file.getBytes());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		service.setLogo(fileName.toString());
 	}
 }
