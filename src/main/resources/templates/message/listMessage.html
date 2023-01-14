@@ -4,6 +4,7 @@
 <head>
 
     <div th:replace="fragments/header :: header" />
+    
 </head>
 
 <body>
@@ -20,7 +21,7 @@
 				<!-- Topbar -->
 				<div th:replace="fragments/navbar :: navbar" />
 				<!-- End of Topbar -->
-    <div class="container my-2">
+    <!--<div class="container my-2">
         <div class="card">
             <div class="card-body">
                 <div th:switch="${messages}" class="container my-5">
@@ -33,7 +34,26 @@
                         <div th:case="*">
                           <div class="card-body">
 									<div class="table-responsive">
-										<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+										<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0"> -->
+					<div class="container-fluid">
+
+					<!-- Page Heading -->
+					<h1 class="h3 mb-2 text-gray-800">Liste des messages</h1> 
+					
+					 <div th:switch="${messages}">
+					<p class="mb-4">Pour ajouter un nouveau message cliquer ici <a class="btn btn-primary"
+							th:href="@{add}">Ajouter</a></p>
+
+					<!-- DataTales Example -->
+					<div class="card shadow mb-4">
+						<div class="card-header py-3">
+							<h6 class="m-0 font-weight-bold text-primary">Messages</h6>
+						</div>
+						<h2 th:case="null">Aucun message pour le moment!</h2>
+						<div th:case="*">
+						<div class="card-body">
+							<div class="table-responsive">
+								<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
                                         
