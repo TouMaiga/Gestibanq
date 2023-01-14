@@ -169,7 +169,7 @@
 			</a>
 		</div>
 
-		<div class="site-section" id="next">
+		<!-- <div class="site-section" id="next">
 			<div class="container">
 				<div class="row mb-5">
 					<div class="col-md-4 text-center" data-aos="fade-up" data-aos-delay="">
@@ -234,7 +234,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 
 
 		<div class="site-section cta-big-image" id="about-section">
@@ -271,7 +271,7 @@
 		</div>
 
 
-		<section class="site-section border-bottom" id="team-section">
+		<!-- <section class="site-section border-bottom" id="team-section">
 			<div class="container">
 				<div class="row mb-5 justify-content-center">
 					<div class="col-md-8 text-center">
@@ -606,7 +606,7 @@
 					</div>
 				</div>
 			</div>
-		</section>
+		</section> -->
 
 
 
@@ -615,7 +615,8 @@
 			<div class="container">
 				<div class="row mb-5">
 					<div class="col-12 text-center" data-aos="fade">
-						<h2 class="section-title mb-3">Bénéficiez d'une offre complète de services performants</h2>
+						<h2 class="section-title mb-3">Bénéficiez d'une offre complète de services performants.</h2>
+						<p> Gérez vos comptes bancaires, épargnez, financez vos projets, assurez-vous et économisez de l'argent.</p>
 					</div>
 				</div>
 				<div class="row align-items-stretch">
@@ -628,11 +629,12 @@
 							<div>
 								<h3 th:text="${service.titre}"></h3>
 								<p th:text="${service.description}"></p>
-								<p><a href="#">Learn More</a></p>
+								 
 							</div>
 						</div>
 					</div>
-					<!-- <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="100">
+					
+					 <!-- <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="100">
             <div class="unit-4">
               <div class="unit-4-icon">
                 <img src="images/flaticon-svg/svg/006-credit-card.svg" alt="Free Website Template by Free-Template.co" class="img-fluid w-25 mb-4">
@@ -693,13 +695,13 @@
                 <p><a href="#">Learn More</a></p>
               </div>
             </div>
-          </div>-->
+          </div>
 
 				</div>
 			</div>
 		</section>
 
-		<section class="site-section testimonial-wrap" id="testimonials-section" data-aos="fade">
+		 <section class="site-section testimonial-wrap" id="testimonials-section" data-aos="fade">
 			<div class="container">
 				<div class="row mb-5">
 					<div class="col-12 text-center">
@@ -774,9 +776,9 @@
 				</div>
 
 			</div>
-		</section>
+		</section> 
 
-		<section class="site-section bg-light" id="pricing-section">
+		<!-- <section class="site-section bg-light" id="pricing-section">
 			<div class="container">
 				<div class="row mb-5">
 					<div class="col-12 text-center" data-aos="fade-up">
@@ -843,9 +845,9 @@
 							</p>
 						</div>
 					</div>
-				</div>
+				</div> -->
 
-				<div class="row site-section" id="faq-section">
+			<!--	<div class="row site-section" id="faq-section">
 					<div class="col-12 text-center" data-aos="fade">
 						<h2 class="section-title">Frequently Ask Questions</h2>
 					</div>
@@ -912,9 +914,9 @@
 					</div>
 				</div>
 			</div>
-		</section>
+		</section> -->
 
-		<section class="site-section" id="about-section">
+	<!--	<section class="site-section" id="about-section">
 			<div class="container">
 
 				<div class="row">
@@ -964,7 +966,7 @@
 
 
 			</div>
-		</section>
+		</section> -->
 
 
 
@@ -973,7 +975,7 @@
 			<div class="container">
 				<div class="row mb-5">
 					<div class="col-12 text-center" data-aos="fade">
-						<h2 class="section-title mb-3">Our Blog</h2>
+						<h2 class="section-title mb-3">Actualités</h2>
 					</div>
 				</div>
 
@@ -982,13 +984,13 @@
 						data-aos-delay="">
 						<div class="h-entry">
 							<a href="single.html">
-								<img src="images/img_1.jpg" alt="Image" class="img-fluid">
+								<img th:src="@{'/uploads/'+ ${actuality.logo}}" alt="Image" class="img-fluid">
 							</a>
 							<h2 th:text="${actuality.name}" class="font-size-regular"><a href="#"></a></h2>
 							<div class="meta mb-4">Ham Brook <span class="mx-2">&bullet;</span> Jan 18, 2019<span
-									class="mx-2">&bullet;</span> <a href="#">News</a></div>
+									 class="mx-2">&bullet;</span>  <!--<a href="#">News</a> --> </div>
 							<p th:text="${actuality.contenu}"></p>
-							<p><a href="#">Continue Reading...</a></p>
+							<!-- <p><a href="#">Continue Reading...</a></p> -->
 						</div>
 					</div>
 					<div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="100">
@@ -1002,23 +1004,10 @@
 									class="mx-2">&bullet;</span> <a href="#">News</a></div>
 							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus eligendi nobis ea maiores
 								sapiente veritatis reprehenderit suscipit quaerat rerum voluptatibus a eius.</p>
-							<p><a href="#">Continue Reading...</a></p>
+							<!-- <p><a href="#">Continue Reading...</a></p> -->
 						</div>
 					</div>
-					<div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="200">
-						<div class="h-entry">
-							<a href="single.html">
-								<img src="images/img_3.jpg" alt="Image" class="img-fluid">
-							</a>
-							<h2 class="font-size-regular"><a href="#">A Basic Guide to Starting a Franchise in the
-									Philippines</a></h2>
-							<div class="meta mb-4">James Phelps <span class="mx-2">&bullet;</span> Jan 18, 2019<span
-									class="mx-2">&bullet;</span> <a href="#">News</a></div>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus eligendi nobis ea maiores
-								sapiente veritatis reprehenderit suscipit quaerat rerum voluptatibus a eius.</p>
-							<p><a href="#">Continue Reading...</a></p>
-						</div>
-					</div>
+					
 
 				</div>
 			</div>
@@ -1031,7 +1020,11 @@
 			<div class="container">
 				<div class="row mb-5">
 					<div class="col-12 text-center">
-						<h2 class="section-title mb-3">Contact Us</h2>
+						<h2 class="section-title mb-3">Besoin d'aide ? </h2>
+						<p> Opposition sur votre carte bancaire, question concernant vos solutions... </p>
+						
+							<p> Retrouvez toutes nos informations de contatcs !</p>
+						  
 					</div>
 				</div>
 				<div class="row mb-5">
@@ -1046,13 +1039,13 @@
 					<div class="col-md-4 text-center">
 						<p class="mb-4">
 							<span class="icon-phone d-block h2 text-primary"></span>
-							<a href="#">+33 4 82 67 47 47</a>
+							<a href="#">+33 9 07 07 07 07</a>
 						</p>
 					</div>
 					<div class="col-md-4 text-center">
 						<p class="mb-0">
 							<span class="icon-mail_outline d-block h2 text-primary"></span>
-							<a href="#">groupe3@gmail.com</a>
+							<a href="#">gestibanq@gmail.com</a>
 						</p>
 					</div>
 				</div>
@@ -1064,11 +1057,11 @@
 						<form action="#" th:action="@{/message/add}" th:object="${message}" method="post"
 							class="p-5 bg-white">
 
-							<h2 class="h4 text-black mb-5">Contact Form</h2>
+							<h2 class="h4 text-black mb-5">Formulaire de contact</h2>
 
 							<div class="row form-group">
 								<div class="col-md-6 mb-3 mb-md-0">
-									<label class="text-black" for="fname">First Name</label>
+									<label class="text-black" for="fname">Nom et Prénom</label>
 									<input type="text" th:field="*{firstname}" id="fname" class="form-control">
 								</div>
 								<!--<div class="col-md-6">
@@ -1088,7 +1081,7 @@
 							<div class="row form-group">
 
 								<div class="col-md-12">
-									<label class="text-black" for="subject">Subject</label>
+									<label class="text-black" for="subject">Sujet</label>
 									<input type="text" th:field="*{sujet}" id="subject" class="form-control">
 								</div>
 							</div>

@@ -28,7 +28,7 @@ import jakarta.validation.Valid;
 @RequestMapping("/actuality/")
 
 public class ActualityController {
-	
+
 	public static String uploadDirectory = System.getProperty("user.dir") + "/src/main/resources/static/uploads";
 
 	private final ActualityRepository actualityRepository;
@@ -66,11 +66,19 @@ public class ActualityController {
 	}
 
 	@PostMapping("add")
-	public String addActuality(@Valid Actuality actuality, BindingResult result, Model model, @RequestParam("files") MultipartFile[] files) {
+	public String addActuality(@Valid Actuality actuality, BindingResult result, Model model,
+			@RequestParam("files") MultipartFile[] files) {
 		if (result.hasErrors()) {
 			return "actuality/addActuality";
 		}
-		
+
+		addLogo(actuality, files);
+
+		actualityRepository.save(actuality);
+		return "redirect:list";
+	}
+
+	private void addLogo(Actuality actuality, MultipartFile[] files) {
 		StringBuilder fileName = new StringBuilder();
 		MultipartFile file = files[0];
 		Path fileNameAndPath = Paths.get(uploadDirectory, file.getOriginalFilename());
@@ -81,9 +89,6 @@ public class ActualityController {
 			e.printStackTrace();
 		}
 		actuality.setLogo(fileName.toString());
-		
-		actualityRepository.save(actuality);
-		return "redirect:list";
 	}
 
 	@GetMapping("delete/{id}")
@@ -114,7 +119,7 @@ public class ActualityController {
 
 		return "actuality/updateActuality";
 	}
-	
+
 	@GetMapping("show/{id}")
 	public String showDetailActuality(@PathVariable("id") long id, Model model) {
 		Actuality actuality = actualityRepository.findById(id)
@@ -124,8 +129,10 @@ public class ActualityController {
 	}
 
 	@PostMapping("update")
-	public String updateActuality(@Valid Actuality actuality, BindingResult result, Model model) {
+	public String updateActuality(@Valid Actuality actuality, BindingResult result, Model model,
+			@RequestParam("files") MultipartFile[] files) {
 
+		addLogo(actuality, files);
 		actualityRepository.save(actuality);
 		return "redirect:list";
 
