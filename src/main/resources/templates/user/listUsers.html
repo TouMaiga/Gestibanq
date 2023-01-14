@@ -20,21 +20,25 @@
 				<!-- Topbar -->
 				<div th:replace="fragments/navbar :: navbar" />
 				<!-- End of Topbar -->
-				<div class="container my-2">
-					<div class="card">
+				<div class="container-fluid">
+
+					<!-- Page Heading -->
+					<h1 class="h3 mb-2 text-gray-800">Liste des utilisateurs</h1> 
+					
+					 <div th:switch="${users}">
+					<p class="mb-4">Pour ajouter un nouveau utlisateur cliquer ici <a class="btn btn-primary"
+							th:href="@{add}">Ajouter</a></p>
+
+					<!-- DataTales Example -->
+					<div class="card shadow mb-4">
+						<div class="card-header py-3">
+							<h6 class="m-0 font-weight-bold text-primary">Utilisateurs</h6>
+						</div>
+						<h2 th:case="null">Aucun utilisateur pour le moment!</h2>
+						<div th:case="*">
 						<div class="card-body">
-							<div th:switch="${users}" class="container my-5">
-								<p class="my-5">
-									<a th:href="@{'/user/add'}" class="btn btn-primary"><i
-											class="fas fa-user-plus ml-2">Ajouter un utilisateur</i></a>
-								</p>
-								<div class="col-md-10">
-									<h2 th:case="null">pas encore d'utilisateurs!</h2>
-									<div th:case="*">
-										<div class="card-body">
-											<div class="table-responsive">
-												<table class="table table-bordered" id="dataTable" width="100%"
-													cellspacing="0">
+							<div class="table-responsive">
+								<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 													<thead>
 														<tr>
 
