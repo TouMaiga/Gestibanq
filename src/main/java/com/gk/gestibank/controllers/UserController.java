@@ -15,7 +15,6 @@ import com.gk.gestibank.entities.User;
 import com.gk.gestibank.repositories.RoleRepository;
 import com.gk.gestibank.repositories.UserRepository;
 
-import dto.UserDto;
 import jakarta.validation.Valid;
 
 @Controller
@@ -40,17 +39,12 @@ public class UserController {
 		return "user/listUsers";
 	}
 
-	/*
-	 * @GetMapping("add") public String showAddRoleForm() { return "role/addRole"; }
-	 */
-
 	@GetMapping("add")
 	public String addUser(Model model) {
-		// UserDto user = new UserDto();
 		User user = new User();
 		List<Role> roles = roleRepository.findAll();
 		model.addAttribute("roles", roles);
-		model.addAttribute("userDto", user);
+		model.addAttribute("user", user);
 		return "user/addUser";
 	}
 
@@ -59,40 +53,26 @@ public class UserController {
 		if (result.hasErrors()) {
 			return "user/addUser";
 		}
-		
-		/*
-		User user = new User();
-		user.setActive(userDto.getActive());
-		user.setEmail(userDto.getEmail());
-		user.setFirstName(userDto.getFirstName());
-		user.setLastName(userDto.getLastName());
-		user.setPassword(userDto.getPassword());
-		
-		Role role = roleRepository.findById(userDto.getRole().getId());
 
-		user.getRoles().add(role);*/
 		userRepository.save(user);
 		return "redirect:list";
 	}
 
 	@GetMapping("edit/{id}")
 	public String editUser(@PathVariable("id") int id, Model model) {
-		
+
 		User user = userRepository.findById(id)
 				.orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
 		model.addAttribute("user", user);
-		
+
 		List<Role> roles = roleRepository.findAll();
 		model.addAttribute("roles", roles);
-		
+
 		return "user/updateUser";
 	}
 
 	@PostMapping("update")
 	public String updateUser(@Valid User user, BindingResult result, Model model) {
-		/*
-		User existing = userRepository.findById(user.getId())
-				.orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));*/
 
 		userRepository.save(user);
 		return "redirect:list";
