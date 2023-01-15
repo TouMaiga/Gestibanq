@@ -241,28 +241,26 @@
 			<div class="container">
 				<div class="row mb-5 justify-content-center">
 					<div class="col-md-8 text-center">
-						<h2 class="section-title mb-3" data-aos="fade-up" data-aos-delay="">About Us</h2>
-						<p class="lead" data-aos="fade-up" data-aos-delay="100">Lorem ipsum dolor sit amet consectetur
-							adipisicing elit. Minus minima neque tempora reiciendis.</p>
+						<h2 class="section-title mb-3" data-aos="fade-up" data-aos-delay=""> À propos de nous</h2>
+						<p class="lead" data-aos="fade-up" data-aos-delay="100">GestiBanq, banque en ligne  et la moins chère en France.</p>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-lg-6 mb-5" data-aos="fade-up" data-aos-delay="">
 						<figure class="circle-bg">
-							<img th:src="@{/front/images/hero_1.jpg}" alt="Free Website Template by Free-Template.co"
+							<img th:src="@{/front/images/mai.jpg}" alt="Free Website Template by Free-Template.co"
 								class="img-fluid">
 						</figure>
 					</div>
 					<div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="100">
 
-						<h3 class="text-black mb-4">We Solve Your Financial Problem</h3>
+						<h3 class="text-black mb-4"> Confiez-nous la resolution votre problème financier.</h3>
 
-						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-							there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the
-							Semantics, a large language ocean.</p>
+						<p> GestiBanq vous propose un nombre de produits bancaires important, allant du crédit conso aux livrets d’épargne en passant par les comptes pour enfant ou encore l’assurance habitation.</p>
 
-						<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.
-							It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+						<p> Avec la prime pour l’ouverture d’un compte et ses nombreuses promos, GestiBanq est la banque en ligne à moindre frais avec des fonctionnalités pratiques et innovantes.
+
+ </p>
 
 					</div>
 				</div>
@@ -987,13 +985,13 @@
 								<img th:src="@{'/uploads/'+ ${actuality.logo}}" alt="Image" class="img-fluid">
 							</a>
 							<h2 th:text="${actuality.name}" class="font-size-regular"><a href="#"></a></h2>
-							<div class="meta mb-4">Ham Brook <span class="mx-2">&bullet;</span> Jan 18, 2019<span
+							<div class="meta mb-4"> <span class="mx-2">&bullet;</span> Jan 14, 2023<span
 									 class="mx-2">&bullet;</span>  <!--<a href="#">News</a> --> </div>
 							<p th:text="${actuality.contenu}"></p>
 							<!-- <p><a href="#">Continue Reading...</a></p> -->
 						</div>
 					</div>
-					<div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="100">
+					<!-- <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="100">
 						<div class="h-entry">
 							<a href="single.html">
 								<img src="images/img_4.jpg" alt="Image" class="img-fluid">
@@ -1004,9 +1002,9 @@
 									class="mx-2">&bullet;</span> <a href="#">News</a></div>
 							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus eligendi nobis ea maiores
 								sapiente veritatis reprehenderit suscipit quaerat rerum voluptatibus a eius.</p>
-							<!-- <p><a href="#">Continue Reading...</a></p> -->
+							 <p><a href="#">Continue Reading...</a></p> 
 						</div>
-					</div>
+					</div> -->
 					
 
 				</div>
@@ -1052,29 +1050,26 @@
 				<div class="row">
 					<div class="col-md-12 mb-5">
 
-
-
-						<form action="#" th:action="@{/message/add}" th:object="${message}" method="post"
-							class="p-5 bg-white">
+						<form action="#" th:action="@{/message/add}" th:object="${message}" method="post" class="p-5 bg-white">
 
 							<h2 class="h4 text-black mb-5">Formulaire de contact</h2>
 
 							<div class="row form-group">
 								<div class="col-md-6 mb-3 mb-md-0">
-									<label class="text-black" for="fname">Nom et Prénom</label>
-									<input type="text" th:field="*{firstname}" id="fname" class="form-control">
+									<label class="text-black" for="fname">Prénom</label>
+									<input type="text" th:field="*{firstname}" id="fname" class="form-control" th:required="required">
 								</div>
-								<!--<div class="col-md-6">
-                  <label class="text-black" for="lname">Last Name</label>
-                  <input type="text" id="lname" class="form-control">
-                </div>-->
+								<div class="col-md-6">
+				                  <label class="text-black" for="lname">Nom</label>
+				                  <input type="text" id="lname" th:field="*{lastname}" class="form-control" th:required="required">
+				                </div>
 							</div>
 
 							<div class="row form-group">
 
 								<div class="col-md-12">
 									<label class="text-black" for="email">Email</label>
-									<input type="email" id="email" class="form-control" th:field="*{email}">
+									<input type="email" id="email" th:field="*{email}" class="form-control" th:required="required">
 								</div>
 							</div>
 
@@ -1082,7 +1077,7 @@
 
 								<div class="col-md-12">
 									<label class="text-black" for="subject">Sujet</label>
-									<input type="text" th:field="*{sujet}" id="subject" class="form-control">
+									<input type="text" th:field="*{sujet}" id="subject" class="form-control" th:required="required">
 								</div>
 							</div>
 
@@ -1090,14 +1085,14 @@
 								<div class="col-md-12">
 									<label class="text-black" for="message">Message</label>
 									<textarea th:field="*{contenu}" id="message" cols="30" rows="7" class="form-control"
-										placeholder="Write your notes or questions here..."></textarea>
+										placeholder="Write your notes or questions here..." th:required="required"></textarea>
 								</div>
 							</div>
 
 
 							<div class="row form-group">
 								<div class="col-md-12">
-									<input type="submit" value="Accéder au formulaire de contact"
+									<input type="submit" value="Envoyer le message"
 										class="btn btn-primary btn-md text-white">
 								</div>
 							</div>

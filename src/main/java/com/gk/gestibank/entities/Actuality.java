@@ -16,7 +16,7 @@ import jakarta.persistence.GeneratedValue;
 		    private String name;
 		    
 		    @NotBlank(message = "Contenu is mandatory")
-		    @Column(name = "contenu")
+		    @Column(name = "contenu", length = 2048)
 		    private String contenu;
 		    
 		    private String logo;
