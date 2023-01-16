@@ -15,7 +15,6 @@ public class Agent {
 	    @GeneratedValue(strategy = GenerationType.AUTO)
 	    private long id;
 	
-		
 		@NotBlank(message = "Matricule is mandatory")
 		@Column(name = "matricule")
 		private String matricule;
