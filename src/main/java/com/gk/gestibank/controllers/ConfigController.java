@@ -21,7 +21,7 @@ import com.gk.gestibank.entities.Config;
 import com.gk.gestibank.repositories.ConfigRepository;
 
 
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/config/")

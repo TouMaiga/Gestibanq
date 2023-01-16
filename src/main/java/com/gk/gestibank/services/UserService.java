@@ -1,7 +1,7 @@
 package com.gk.gestibank.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
-/*import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.gk.gestibank.entities.Role;
@@ -38,6 +38,6 @@ public class UserService {
         userRepository.save(user);
     }
 
-}*/
+}
 
 

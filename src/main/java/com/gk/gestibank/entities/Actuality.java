@@ -1,10 +1,12 @@
 	package com.gk.gestibank.entities;
-	import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-	import jakarta.persistence.GenerationType;
-	import jakarta.persistence.Id;
-	import jakarta.validation.constraints.NotBlank;
+	
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+
 	@Entity
 	public class Actuality {
 			@Id
@@ -19,15 +21,12 @@ import jakarta.persistence.GeneratedValue;
 		    @Column(name = "contenu")
 		    private String contenu;
 		    
-		    private String logo;
-		    
 	
 		    public Actuality() {}
 		
-		    public Actuality (String name, String contenu,String logo) {
+		    public Actuality (String name, String contenu) {
 		        this.name = name;
 		        this.contenu = contenu;
-		        this.logo = logo;
 		       
 		    }
 
@@ -55,13 +54,9 @@ import jakarta.persistence.GeneratedValue;
 				this.contenu = contenu;
 			}
 
-			public String getLogo() {
-				return logo;
-			}
-
-			public void setLogo(String logo) {
-				this.logo = logo;
-			}
+			
+		   
+		    
 		    
 	}
 
