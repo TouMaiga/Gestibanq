@@ -1,4 +1,4 @@
-	package com.gk.gestibank.entities;
+package com.gk.gestibank.entities;
 	
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,54 +9,61 @@ import javax.validation.constraints.NotBlank;
 
 	@Entity
 	public class Actuality {
-			@Id
-		    @GeneratedValue(strategy = GenerationType.AUTO)
-		    private long id;
-		
-		    @NotBlank(message = "Name is mandatory")
-		    @Column(name = "name")
-		    private String name;
-		    
-		    @NotBlank(message = "Contenu is mandatory")
-		    @Column(name = "contenu", length = 2048)
-		    private String contenu;
-		    
+		@Id
+	    @GeneratedValue(strategy = GenerationType.AUTO)
+	    private long id;
 	
-		    public Actuality() {}
-		
-		    public Actuality (String name, String contenu) {
-		        this.name = name;
-		        this.contenu = contenu;
-		       
-		    }
+	    @NotBlank(message = "Name is mandatory")
+	    @Column(name = "name")
+	    private String name;
+	    
+	    @NotBlank(message = "Contenu is mandatory")
+	    @Column(name = "contenu", length = 2048)
+	    private String contenu;
+	    
+	    private String logo;
+	    
 
-			public long getId() {
-				return id;
-			}
+	    public Actuality() {}
+	
+	    public Actuality (String name, String contenu,String logo) {
+	        this.name = name;
+	        this.contenu = contenu;
+	        this.logo = logo;
+	       
+	    }
 
-			public void setId(long id) {
-				this.id = id;
-			}
+		public long getId() {
+			return id;
+		}
 
-			public String getName() {
-				return name;
-			}
+		public void setId(long id) {
+			this.id = id;
+		}
 
-			public void setName(String name) {
-				this.name = name;
-			}
+		public String getName() {
+			return name;
+		}
 
-			public String getContenu() {
-				return contenu;
-			}
+		public void setName(String name) {
+			this.name = name;
+		}
 
-			public void setContenu(String contenu) {
-				this.contenu = contenu;
-			}
+		public String getContenu() {
+			return contenu;
+		}
 
-			
-		   
-		    
-		    
-	}
+		public void setContenu(String contenu) {
+			this.contenu = contenu;
+		}
+
+		public String getLogo() {
+			return logo;
+		}
+
+		public void setLogo(String logo) {
+			this.logo = logo;
+		}
+	    
+}
 

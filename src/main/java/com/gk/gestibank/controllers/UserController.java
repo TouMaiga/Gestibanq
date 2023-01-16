@@ -15,7 +15,7 @@ import com.gk.gestibank.entities.User;
 import com.gk.gestibank.repositories.RoleRepository;
 import com.gk.gestibank.repositories.UserRepository;
 
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/user/")
