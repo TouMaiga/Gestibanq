@@ -635,7 +635,7 @@
 					 <!-- <div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up" data-aos-delay="100">
             <div class="unit-4">
               <div class="unit-4-icon">
-                <img th:href="@{front/images/flaticon-svg/svg/006-credit-card.svg}" alt="Free Website Template by Free-Template.co" class="img-fluid w-25 mb-4">
+                <img src="images/flaticon-svg/svg/006-credit-card.svg" alt="Free Website Template by Free-Template.co" class="img-fluid w-25 mb-4">
               </div>
               <div>
                 <h3>Credit Card</h3>
@@ -1050,7 +1050,7 @@
 				<div class="row">
 					<div class="col-md-12 mb-5">
 
-						<form action="#" th:action="@{/message/add}" th:object="${message}" method="post" class="p-5 bg-white">
+						<form  th:action="@{/message/add}" th:object="${message}" method="post" class="p-5 bg-white">
 
 							<h2 class="h4 text-black mb-5">Formulaire de contact</h2>
 
@@ -1058,10 +1058,12 @@
 								<div class="col-md-6 mb-3 mb-md-0">
 									<label class="text-black" for="fname">Prénom</label>
 									<input type="text" th:field="*{firstname}" id="fname" class="form-control" th:required="required">
-								</div>
+									 <span th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}" class="text-danger"></span>
+								</div>-
 								<div class="col-md-6">
 				                  <label class="text-black" for="lname">Nom</label>
 				                  <input type="text" id="lname" th:field="*{lastname}" class="form-control" th:required="required">
+				                  <span th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}" class="text-danger"></span>
 				                </div>
 							</div>
 
@@ -1070,6 +1072,7 @@
 								<div class="col-md-12">
 									<label class="text-black" for="email">Email</label>
 									<input type="email" id="email" th:field="*{email}" class="form-control" th:required="required">
+									<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></span>
 								</div>
 							</div>
 
@@ -1078,14 +1081,16 @@
 								<div class="col-md-12">
 									<label class="text-black" for="subject">Sujet</label>
 									<input type="text" th:field="*{sujet}" id="subject" class="form-control" th:required="required">
+									<span th:if="${#fields.hasErrors('sujet')}" th:errors="*{sujet}" class="text-danger"></span>
 								</div>
 							</div>
 
-							<div class="row form-group">
+						<div class="row form-group">
 								<div class="col-md-12">
 									<label class="text-black" for="message">Message</label>
 									<textarea th:field="*{contenu}" id="message" cols="30" rows="7" class="form-control"
 										placeholder="Write your notes or questions here..." th:required="required"></textarea>
+										<span th:if="${#fields.hasErrors('contenu')}" th:errors="*{contenu}" class="text-danger"></span> 
 								</div>
 							</div>
 
@@ -1098,9 +1103,6 @@
 							</div>
 						</form>
 					</div>
-
-
-
 
 
 					<footer class="site-footer">

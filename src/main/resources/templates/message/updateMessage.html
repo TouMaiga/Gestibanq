@@ -21,12 +21,15 @@
 
                         <div class="row">
                             <div class="form-group col-md-6">
-                                <label for="auteur" class="col-form-label">Auteur</label> <input type="text" th:field="*{auteur}" class="form-control" id="auteur" placeholder="Auteur"> <span th:if="${#fields.hasErrors('auteur')}" th:errors="*{auteur}" class="text-danger"></span>
-                                  <label for="sujet" class="col-form-label">Sujet</label> <input type="text" th:field="*{sujet}" class="form-control" id="sujet" placeholder="Sujet"> <span th:if="${#fields.hasErrors('sujet')}" th:errors="*{sujet}" class="text-danger"></span>
+                                <label for="firstname" class="col-form-label">FirstName</label> <input type="text" th:field="*{firstname}" class="form-control" id="firstname" placeholder="FirstName"> <span th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}" class="text-danger"></span>
+                                <label for="lastname" class="col-form-label">LastName</label> <input type="text" th:field="*{lastname}" class="form-control" id="lastname" placeholder="LastName"> <span th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}" class="text-danger"></span>
+                                  
+                                 <label for="email" class="col-form-label">Email</label> <input type="text" th:field="*{email}" class="form-control" id="email" placeholder="Email"> <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></span>
+                                 <label for="sujet" class="col-form-label">Sujet</label> <input type="text" th:field="*{sujet}" class="form-control" id="sujet" placeholder="Sujet"> <span th:if="${#fields.hasErrors('sujet')}" th:errors="*{sujet}" class="text-danger"></span>
 
-<label for="contenu" class="col-form-label">Contenu</label> <input type="text" th:field="*{contenu}" class="form-control" id="contenu" placeholder="Contenu"> <span th:if="${#fields.hasErrors('contenu')}" th:errors="*{contenu}" class="text-danger"></span>
+                                 <label for="contenu" class="col-form-label">Contenu</label> <input type="text" th:field="*{contenu}" class="form-control" id="contenu" placeholder="Contenu"> <span th:if="${#fields.hasErrors('contenu')}" th:errors="*{contenu}" class="text-danger"></span>
                             
-<label for="reponse" class="col-form-label">Reponse</label> 
+                                  <label for="reponse" class="col-form-label">Reponse</label> 
                                 
            
            <textarea  th:field="*{reponse}" class="form-control" id="reponse" placeholder="reponse"> </textarea>
