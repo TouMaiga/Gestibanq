@@ -1,10 +1,7 @@
 package com.gk.gestibank.controllers;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,15 +11,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.gk.gestibank.entities.Actuality;
-import com.gk.gestibank.entities.Service;
 import com.gk.gestibank.repositories.ActualityRepository;
 
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/actuality/")
@@ -38,32 +32,34 @@ public class ActualityController {
 		this.actualityRepository = actualityRepository;
 	}
 
-	@GetMapping("list")
-	// @ResponseBody
-	public String listActualities(Model model) {
-
-		List<Actuality> lp = (List<Actuality>) actualityRepository.findAll();
-		if (lp.size() == 0) {
-
-			lp = null;
-		}
-		model.addAttribute("actualities", lp);
-
-		return "actuality/listActuality";
-
-		// List<Provider> lp = (List<Provider>)providerRepository.findAll();
-		// System.out.println(lp);
-
-		// return "Nombre de fournisseur = " + lp.size();
-	}
-
-	@GetMapping("add")
-	public String showAddActualityForm(Model model) {
-		Actuality actuality = new Actuality();
-		// object dont la valeur des attributs par defaut
-		model.addAttribute("actuality", actuality);
-		return "actuality/addActuality";
-	}
+	  @GetMapping("list")
+	    //@ResponseBody
+	    public String listActualities(Model model) {
+	    	
+	    	List<Actuality> lp = (List<Actuality>)actualityRepository.findAll();
+	    	if(lp.size() == 0) {
+	    		
+	    		lp = null;
+	    	}
+	        model.addAttribute("actualities",lp);
+	        
+	       
+	        
+	        return "actuality/listActuality";
+	        
+	        //List<Provider> lp = (List<Provider>)providerRepository.findAll();
+	        //System.out.println(lp);
+	        
+	        //return "Nombre de fournisseur = " + lp.size();
+	    }
+		  @GetMapping("add") 
+		  public String showAddActualityForm(Model model) {
+		  Actuality actuality = new Actuality(); 
+		  // object dont la valeur des attributs par defaut
+		  model.addAttribute("actuality", actuality); 
+		  return "actuality/addActuality"; }
+		 
+	 
 
 	@PostMapping("add")
 	public String addActuality(@Valid Actuality actuality, BindingResult result, Model model,

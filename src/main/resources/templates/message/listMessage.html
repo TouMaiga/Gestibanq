@@ -57,9 +57,7 @@
                                 <thead>
                                     <tr>
                                         
-                                        <th>FirstName</th>
-                                        <th>LarstName</th>
-                                        <th>Email</th>
+                                        <th>Auteur</th>
                                         <th>Sujet</th>
                                         <th>Contenu</th> 
                                         <th>Reponse</th>                                       
@@ -69,13 +67,10 @@
                                 </thead>
                                 <tbody>
                                     <tr th:each="message : ${messages}">
-                                        <td th:text="${message.firstname}"></td>
-                                        <td th:text="${message.lastname}"></td>
-                                        <td th:text="${message.email}"></td>
+                                        <td th:text="${message.auteur}"></td>
                                         <td th:text="${message.sujet}"></td>
                                         <td th:text="${message.contenu}"></td>
-                                        <td th:text="${message.reponse}"></td>                                        
-                                        <td><a th:href="@{/message/edit/{id}(id=${message.id})}" class="btn btn-warning"><i class="fas fa-user-edit ml-2"></i></a></td>
+                                        <td th:text="${message.reponse}"></td>                                        <td><a th:href="@{/message/edit/{id}(id=${message.id})}" class="btn btn-warning"><i class="fas fa-user-edit ml-2"></i></a></td>
                                         <td><a th:href="@{/message/delete/{id}(id=${message.id})}" class="btn btn-danger"><i class="fas fa-user-times ml-2"></i></a></td>
                                     </tr>
                                 </tbody>
@@ -87,46 +82,9 @@
             </div>
         </div>
     </div>
-    </div>
-				<!-- End of Main Content -->
-
-				<!-- Footer -->
-				<div th:replace="fragments/footer :: footer" />
-				<!-- End of Footer -->
-
-			</div>
-			<!-- End of Content Wrapper -->
-
-		</div>
-		<!-- End of Page Wrapper -->
-
-		<!-- Scroll to Top Button-->
-		<a class="scroll-to-top rounded" href="#page-top">
-			<i class="fas fa-angle-up"></i>
-		</a>
-
-		<!-- Logout Modal-->
-		<div th:replace="fragments/logoutmodal :: logoutmodal" />
-
-		<!-- Bootstrap core JavaScript-->
-		<script th:src="@{/back/vendor/jquery/jquery.min.js}"></script>
-		<script th:src="@{/back/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
-
-		<!-- Core plugin JavaScript-->
-		<script th:src="@{/back/vendor/jquery-easing/jquery.easing.min.js}"></script>
-
-		<!-- Custom scripts for all pages-->
-		<script th:src="@{/back/js/sb-admin-2.min.js}"></script>
-
-		<!-- Page level plugins -->
-		<script th:src="@{/back/vendor/chart.js/Chart.min.js}"></script>
-
-		<!-- Page level custom scripts -->
-		<script th:src="@{/back/js/demo/chart-area-demo.js}"></script>
-		<script th:src="@{/back/js/demo/chart-pie-demo.js}"></script>
-
 </body>
 
-</html>
 
+
+</html>
                     

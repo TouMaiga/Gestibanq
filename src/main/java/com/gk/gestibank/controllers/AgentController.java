@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.gk.gestibank.entities.Agent;
 import com.gk.gestibank.repositories.AgentRepository;
 
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/agent/")

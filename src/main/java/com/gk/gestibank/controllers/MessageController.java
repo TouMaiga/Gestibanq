@@ -14,13 +14,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.gk.gestibank.entities.Message;
 import com.gk.gestibank.repositories.MessageRepository;
 
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 
         @Controller
         @RequestMapping("/message/")
 public class MessageController {
 	private final MessageRepository messageRepository;
-    
+
 	@Autowired
 	public MessageController(MessageRepository messageRepository) {
 		this.messageRepository = messageRepository;
@@ -44,9 +44,10 @@ public class MessageController {
 	    }
 	  
 	  
+	  
 		  @GetMapping("add") 
 		  public String showAddMessageForm(Model model) {
-		  Message message = new Message() ; 
+		  Message message = new Message(); 
 		  // object dont la valeur des attributs par defaut
 		  model.addAttribute("message", message); 
 		  return "message/addMessage"; }

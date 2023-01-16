@@ -1,12 +1,12 @@
 package com.gk.gestibank.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "service")
@@ -24,9 +24,6 @@ public class Service {
 	
 	@Column(name = "description")
 	private String description;
-	
-	@Column(name = "logo")
-	private String logo;
 
 	// private Agent agent; // un service est fait par un agent
 
@@ -73,14 +70,6 @@ public class Service {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public String getLogo() {
-		return logo;
-	}
-
-	public void setLogo(String logo) {
-		this.logo = logo;
 	}
 
 }
