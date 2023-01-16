@@ -26,6 +26,6 @@ public class Compte {
 	@Column(name = "email")
 	private String email;
 	
-	
+
 	
 }
