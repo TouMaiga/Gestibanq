@@ -1,9 +1,14 @@
 package com.gk.gestibank.entities;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Demande {
@@ -18,6 +23,10 @@ public class Demande {
 	private String contenu;
 	private String date;
 	private String etat;
+	/*
+	 * @ManyToOne(targetEntity = User.class, cascade = CascadeType.PERSIST) private
+	 * Set<User> users = new HashSet<>();
+	 */
 
 	public Demande(int id, String firstNameCustomer, String lastNameCustomer, String email, String sujet, String contenu, String date,
 			String etat) {
@@ -97,5 +106,11 @@ public class Demande {
 	public void setEtat(String etat) {
 		this.etat = etat;
 	}
+
+	/*
+	 * public Set<User> getUsers() { return users; }
+	 * 
+	 * public void setUsers(Set<User> users) { this.users = users; }
+	 */
 
 }
