@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>Utilisateurs</title>
+	<title>Ouvrir un compte</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -18,7 +18,7 @@
 	<!-- Page Wrapper -->
 	<div id="wrapper">
 
-		<div th:replace="fragments/sidebar :: sidebar" />
+		<div th:replace="fragments/sidebarClient :: sidebarClient" />
 
 		<!-- Content Wrapper -->
 		<div id="content-wrapper" class="d-flex flex-column">
@@ -30,26 +30,26 @@
 				<div th:replace="fragments/navbar :: navbar" />
 				<!-- End of Topbar -->
 				<div class="container my-5">
-					<h3> Ajouter un utilisateur </h3>
+					<h3> Ouvrir un compte </h3>
 					<div class="card">
 						<div class="card-body">
 							<div class="col-md-10">
-								<form action="#" th:action="@{/user/add}" th:object="${user}" method="post">
+								<form action="#" th:action="@{/compte/add}" th:object="${compte}" method="post">
 									<div class="row">
 										<div class="form-group col-md-8">
 
-											<label for="name" class="col-form-label">FirstName</label> <input
-												type="text" th:field="*{name}" class="form-control" id="name"
-												placeholder="Name"> <span th:if="${#fields.hasErrors('name')}"
-												th:errors="*{name}" class="text-danger"></span>
+											<label for="nom" class="col-form-label">Nom</label> <input type="text"
+												th:field="*{nom}" class="form-control" id="nom" placeholder="Nom"> 
+												<span th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}" class="text-danger"></span>
 										</div>
+
 
 										<div class="form-group col-md-8">
 
-											<label for="lastname" class="col-form-label">LastName</label> <input
-												type="text" th:field="*{lastName}" class="form-control" id="lastName"
-												placeholder="LastName"> <span th:if="${#fields.hasErrors('lastName')}"
-												th:errors="*{lastName}" class="text-danger"></span>
+											<label for="prenom" class="col-form-label">Prenom</label> <input type="text"
+												th:field="*{prenom}" class="form-control" id="prenom"
+												placeholder="Prenom"> <span th:if="${#fields.hasErrors('prenom')}"
+												th:errors="*{prenom}" class="text-danger"></span>
 										</div>
 
 
@@ -64,41 +64,30 @@
 
 										<div class="form-group col-md-8">
 
-											<label for="password" class="col-form-label">Password</label> 
-											<input type="password" th:field="*{password}" class="form-control" id="password" placeholder="Password">
-											<span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-danger"></span>
-										</div>
-
-										<div class="form-group col-md-8">
-										
-											<div class="custom-control custom-radio custom-control-inline">
-												<input type="radio" id="option1" class="custom-control-input" value="1"
-													th:field="*{active}">
-												<label class="custom-control-label" for="option1">Activé</label>
-											</div>
-											<div class="custom-control custom-radio custom-control-inline">
-												<input type="radio" id="option2" class="custom-control-input" value="2"
-													th:field="*{active}">
-												<label class="custom-control-label" for="option2">Désactivé</label>
-											</div>
-
+											<label for="sujet" class="col-form-label">Solde</label> <input type=""
+												th:field="*{solde}" class="form-control" id="solde" placeholder="Solde">
+											<span th:if="${#fields.hasErrors('solde')}" th:errors="*{solde}"
+												class="text-danger"></span>
 										</div>
 										
-										<!--
 										<div class="form-group col-md-8">
-											<label for="role" class="col-form-label">Roles</label> 
-											<select id="role" th:field="*{role}">
-												<option th:each="role : ${roles}"
-														th:value="${{role.role}}"
-														th:text="${role.role}">
-													Roles
-												</option>
-											</select>
-											<span th:if="${#fields.hasErrors('role')}" th:errors="*{role}" class="text-danger"></span>
+
+											<label for="sujet" class="col-form-label">Numéro de compte</label> <input type="text"
+												th:field="*{numeroCompte}" class="form-control" id="numeroCompte" placeholder="Numéro de compte">
+											<span th:if="${#fields.hasErrors('numeroCompte')}" th:errors="*{numeroCompte}"
+												class="text-danger"></span>
 										</div>
-											-->
+										
+										<div class="form-group col-md-8">
+
+											<label for="sujet" class="col-form-label">Type</label> <input type="text"
+												th:field="*{type}" class="form-control" id="type" placeholder="Type">
+											<span th:if="${#fields.hasErrors('type')}" th:errors="*{type}"
+												class="text-danger"></span>
+										</div>
+										
 										<div class="col-md-6">
-											<input type="submit" class="btn btn-primary" value="Ajouter">
+											<input type="submit" class="btn btn-primary" value="Créer le compte">
 										</div>
 
 										<div class="form-group col-md-8"></div>
