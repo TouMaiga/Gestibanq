@@ -1,0 +1,93 @@
+<div th:fragment="sidebarAgent">
+		 <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" th:href=@{/agent}>
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-laugh-wink"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">Agent <sup>GK</sup></div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="index.html">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Interface
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+           
+
+          
+                  
+            
+             <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilitiesMessage"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Gestion de message </span>
+                </a>
+                <div id="collapseUtilitiesMessage" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Message </h6>
+                         <a class="collapse-item" th:href="@{/message/add}">Ajouter</a>
+                          <a class="collapse-item" th:href="@{/message/list}">Liste</a>
+                     </div>
+                </div>
+            </li>
+            
+            
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilitiesDemande"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Gestion des demandes </span>
+                </a>
+                <div id="collapseUtilitiesDemande" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Demande </h6>
+                         <a class="collapse-item" th:href="@{/demande/traiter}">Traiter</a>
+                          <a class="collapse-item" th:href="@{/demande/list}">Liste</a>
+                     </div>
+                </div>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilitiesActuality"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Gestion  Actualités</span>
+                </a>
+                <div id="collapseUtilitiesActuality" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Actualités</h6>
+                        <a class="collapse-item" th:href="@{/actuality/add}">Ajouter</a>
+                        <a class="collapse-item" th:href="@{/actuality/list}">Liste</a>
+                     </div>
+                </div>
+            </li>
+            
+              
+            <!-- Divider -->
+            <hr class="sidebarAgent-divider">
+
+
+        </ul>
+        <!-- End of Sidebar -->
+		</div>

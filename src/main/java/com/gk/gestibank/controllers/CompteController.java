@@ -37,7 +37,7 @@ public class CompteController {
     		
     		lp = null;
     	}
-        model.addAttribute("compte",lp);
+        model.addAttribute("comptes",lp);
         model.addAttribute("nbComptes", nbComptes);
       
         return "compte/listComptes";
@@ -47,7 +47,7 @@ public class CompteController {
 	@GetMapping("add")
     public String showAddCompteForm(Model model) {
     	Compte compte = new Compte();// object dont la valeur des attributs par defaut
-    	model.addAttribute("agent", compte);
+    	model.addAttribute("compte", compte);
         return "compte/addCompte";
     }
 	
@@ -55,7 +55,7 @@ public class CompteController {
     public String addCompte(@Valid Compte compte, BindingResult result, Model model) {
         if (result.hasErrors()) {
         	System.out.println(result);
-            return "compte/addComptet";
+            return "compte/addCompte";
         }
         
        compteRepository.save(compte);

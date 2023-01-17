@@ -10,7 +10,7 @@
 <body>
 	<div id="wrapper">
 
-		<div th:replace="fragments/sidebar :: sidebar" /> 
+		<div th:replace="fragments/sidebarClient :: sidebarClient" />
 
 		<!-- Content Wrapper -->
 		<div id="content-wrapper" class="d-flex flex-column">
@@ -38,18 +38,18 @@
 					<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-2 text-gray-800">Liste des messages</h1> 
+					<h1 class="h3 mb-2 text-gray-800">Liste des comptes</h1> 
 					
-					 <div th:switch="${messages}">
-					<p class="mb-4">Pour ajouter un nouveau message cliquer ici <a class="btn btn-primary"
-							th:href="@{/add}">Ajouter</a></p>
+					 <div th:switch="${comptes}">
+					<p class="mb-4">Ouvrir un nouveau compte <a class="btn btn-primary"
+							th:href="@{/add}">Ouvrir</a></p>
 
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
 						<div class="card-header py-3">
-							<h6 class="m-0 font-weight-bold text-primary">Messages</h6>
+							<h6 class="m-0 font-weight-bold text-primary"> Comptes</h6>
 						</div>
-						<h2 th:case="null">Aucun message pour le moment!</h2>
+						<h2 th:case="null">Aucun compte pour le moment!</h2>
 						<div th:case="*">
 						<div class="card-body">
 							<div class="table-responsive">
@@ -57,26 +57,26 @@
                                 <thead>
                                     <tr>
                                         
-                                        <th>FirstName</th>
-                                        <th>LarstName</th>
+                                        <th>Nom</th>
+                                        <th>Prenom</th>
                                         <th>Email</th>
-                                        <th>Sujet</th>
-                                        <th>Contenu</th> 
-                                        <th>Reponse</th>                                       
+                                        <th>Solde</th>
+                                        <th>Numero Compte</th> 
+                                        <th>Type</th>                                       
                                           <th>Edit</th>
                                         <th>Delete</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr th:each="message : ${messages}">
-                                        <td th:text="${message.firstname}"></td>
-                                        <td th:text="${message.lastname}"></td>
-                                        <td th:text="${message.email}"></td>
-                                        <td th:text="${message.sujet}"></td>
-                                        <td th:text="${message.contenu}"></td>
-                                        <td th:text="${message.reponse}"></td>                                        
-                                        <td><a th:href="@{/message/edit/{id}(id=${message.id})}" class="btn btn-warning"><i class="fas fa-user-edit ml-2"></i></a></td>
-                                        <td><a th:href="@{/message/delete/{id}(id=${message.id})}" class="btn btn-danger"><i class="fas fa-user-times ml-2"></i></a></td>
+                                    <tr th:each="compte : ${comptes}">
+                                        <td th:text="${compte.nom}"></td>
+                                        <td th:text="${compte.prenom}"></td>
+                                        <td th:text="${compte.email}"></td>
+                                        <td th:text="${compte.solde}"></td>
+                                        <td th:text="${compte.numeroCompte}"></td>
+                                        <td th:text="${compte.type}"></td>                                        
+                                        <td><a th:href="@{/compte/edit/{id}(id=${compte.id})}" class="btn btn-warning"><i class="fas fa-user-edit ml-2"></i></a></td>
+                                        <td><a th:href="@{/compte/delete/{id}(id=${compte.id})}" class="btn btn-danger"><i class="fas fa-user-times ml-2"></i></a></td>
                                     </tr>
                                 </tbody>
                             </table>
