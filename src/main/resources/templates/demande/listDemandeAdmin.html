@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<div th:replace="fragments/header :: header" />
+</head>
+
+<body id="page-top">
+
+	<!-- Page Wrapper -->
+	<div id="wrapper">
+
+		<div sec:authorize="hasAuthority('ADMIN')">
+
+			<div th:replace="fragments/sidebar :: sidebar"></div>
+
+		</div>
+		<div sec:authorize="hasAuthority('AGENT')">
+
+			<div th:replace="fragments/sidebarAgent :: sidebarAgent"></div>
+
+		</div>
+
+		<!-- Content Wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
+
+			<!-- Main Content -->
+			<div id="content">
+
+				<!-- Topbar -->
+				<div th:replace="fragments/navbar :: navbar" />
+				<!-- End of Topbar -->
+
+				<!-- Begin Page Content -->
+				<div class="container-fluid">
+
+					<!-- Page Heading -->
+					<h1 class="h3 mb-2 text-gray-800" sec:authorize="hasAuthority('ADMIN')">Demande d'inscriptions</h1>
+
+					<div th:switch="${clients}">
+
+
+						<!-- DataTales Example -->
+						<div class="card shadow mb-4">
+							<div class="card-header py-3">
+								<h6 class="m-0 font-weight-bold text-primary">Demandes</h6>
+							</div>
+							<h2 th:case="null">Aucune inscription pour le moment!</h2>
+							<div th:case="*">
+								<div class="card-body">
+									<div class="table-responsive">
+										<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+											<thead>
+												<tr>
+													<th>Nom</th>
+													<th>Prenom</th>
+													<th>Email</th>
+													<th>Actif</th>
+													<th sec:authorize="hasAuthority('ADMIN')">Agents</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+
+												<tr th:each="client : ${clients}">
+													<td th:text="${client.lastName}"></td>
+													<td th:text="${client.name}"></td>
+													<td th:text="${client.email}"></td>
+													<td th:text="${client.active}"></td>
+													<td>
+														<form action="#" th:action="@{/demande/affect}" method="post" th:if="${#lists.isEmpty(client.inscriptions)}">
+															<input type="hidden" name="clientEmail"
+																th:value="${client.email}">
+															<select name="agentEmail">
+																<option th:each="agent : ${agents}"
+																	th:value="${agent.email}" th:text="${agent.name}">
+																</option>
+															</select>
+															<input type="submit" class="btn btn-primary"
+																value="Affecter">
+														</form>
+														<span th:if="${not #lists.isEmpty(client.inscriptions)}">Déjà affectée</span>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /.container-fluid -->
+					<!-- /.container-fluid -->
+
+				</div>
+				<!-- End of Main Content -->
+
+				<!-- Footer -->
+				<div th:replace="fragments/footer :: footer" />
+				<!-- End of Footer -->
+
+			</div>
+			<!-- End of Content Wrapper -->
+
+		</div>
+		<!-- End of Page Wrapper -->
+
+		<!-- Scroll to Top Button-->
+		<a class="scroll-to-top rounded" href="#page-top">
+			<i class="fas fa-angle-up"></i>
+		</a>
+
+		<!-- Logout Modal-->
+		<div th:replace="fragments/logoutmodal :: logoutmodal" />
+
+		<!-- Bootstrap core JavaScript-->
+		<script th:src="@{/back/vendor/jquery/jquery.min.js}"></script>
+		<script th:src="@{/back/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+		<!-- Core plugin JavaScript-->
+		<script th:src="@{/back/vendor/jquery-easing/jquery.easing.min.js}"></script>
+
+		<!-- Custom scripts for all pages-->
+		<script th:src="@{/back/js/sb-admin-2.min.js}"></script>
+
+		<!-- Page level plugins -->
+		<script th:src="@{/back/vendor/chart.js/Chart.min.js}"></script>
+
+		<!-- Page level custom scripts -->
+		<script th:src="@{/back/js/demo/chart-area-demo.js}"></script>
+		<script th:src="@{/back/js/demo/chart-pie-demo.js}"></script>
+
+</body>
+
+</html>
