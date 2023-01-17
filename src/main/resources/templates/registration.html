@@ -34,31 +34,31 @@
                     <div class="col-lg-7">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                                <h1 class="h4 text-gray-900 mb-4">Créer un compte!</h1>
                             </div>
                             <form autocomplete="off" action="#" th:action="@{/registration}" th:object="${user}" method="post"  role="form" class="user">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
 								class="validation-message"></label>
-                                        <input type="text" class="form-control form-control-user" th:field="*{name}" placeholder="Name">
+                                        <input type="text" class="form-control form-control-user" th:field="*{name}" placeholder="Nom">
                                     </div>
                                     <div class="col-sm-6">
                                         <label	th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
 								class="validation-message"></label>
-                                        <input type="text" class="form-control form-control-user" th:field="*{lastName}" placeholder="Last Name">
+                                        <input type="text" class="form-control form-control-user" th:field="*{lastName}" placeholder="Prénom">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" th:field="*{email}" placeholder="Email">
+                                    <input type="email" class="form-control form-control-user" th:field="*{email}" placeholder="Adresse mail">
                                     <label
 								th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
 								class="validation-message"></label>
                                 </div>
                                 <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <div class="col-sm-12 mb-3 mb-sm-0">
                                         <input type="password" class="form-control form-control-user"
-                                        th:field="*{password}" placeholder="Password">
+                                        th:field="*{password}" placeholder="Mot de passe">
                                         <label
 								th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
 								class="validation-message"></label>
@@ -70,7 +70,7 @@
                                     </div>-->
                                 </div>
             
-							<button type="submit" class="btn btn-primary btn-user btn-block">Register User</button>
+							<button type="submit" class="btn btn-primary btn-user btn-block">S'inscrire</button>
 
 					
 					<span th:utext="${successMessage}"></span>
@@ -84,10 +84,10 @@
                             </form>
                             <hr>
                             <div class="text-center">
-                                <a class="small" href="#">Forgot Password?</a>
+                                <a class="small" href="#">Mot de passe oublié ?</a>
                             </div>
                             <div class="text-center">
-                                <a class="small" th:href="@{/login}">Already have an account? Login!</a>
+                                <a class="small" th:href="@{/login}">Vous avez déjà un compte? Connectez-vous!</a>
                             </div>
                         </div>
                     </div>

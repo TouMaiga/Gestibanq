@@ -16,7 +16,20 @@
 	<!-- Page Wrapper -->
 	<div id="wrapper">
 
-		<div th:replace="fragments/sidebar :: sidebar" />
+		
+  				<div  sec:authorize="hasAuthority('ADMIN')" >
+					
+					<div th:replace="fragments/sidebar :: sidebar"></div>
+					
+				</div>
+                <div  sec:authorize="hasAuthority('AGENT')" >
+					
+                <div th:replace="fragments/sidebarAgent :: sidebarAgent"></div>
+					
+				</div>
+              <!--  <div  sec:authorize="hasAutority('CLIENT')">
+					<div th:replace="fragments/sidebarClient :: sidebarClient"></div>
+				</div>-->
 
 		<!-- Content Wrapper -->
 		<div id="content-wrapper" class="d-flex flex-column">
