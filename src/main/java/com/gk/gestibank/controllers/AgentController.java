@@ -1,6 +1,8 @@
 package com.gk.gestibank.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +14,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.gk.gestibank.entities.Agent;
+import com.gk.gestibank.entities.Role;
+import com.gk.gestibank.entities.User;
 import com.gk.gestibank.repositories.AgentRepository;
+import com.gk.gestibank.repositories.UserRepository;
+import com.gk.gestibank.services.UserService;
 
 import javax.validation.Valid;
 
@@ -23,6 +29,12 @@ public class AgentController {
 	
 	private final AgentRepository agentRepository;
 	
+	@Autowired
+    private UserRepository userRepository;
+	
+	@Autowired
+    private UserService userService;
+	
     @Autowired
     public AgentController(AgentRepository agentRepository) {
         this.agentRepository = agentRepository;
@@ -32,41 +44,45 @@ public class AgentController {
     @GetMapping("list")
     //@ResponseBody
     public String listAgents(Model model) {
+
+        
+    	List<User> lu = (List<User>)userRepository.findAll(); // list de tout les Users
+    	List<User>la = new ArrayList<>();
     	
-    	List<Agent> lp = (List<Agent>)agentRepository.findAll();
-    	long nbAgents =  agentRepository.count();
-    	if(lp.size() == 0) {
+    	for(User user : lu)
+    	{
+    		 Set<Role>userRoles = user.getRoles();
+    		 Object roles[] = userRoles.toArray();
+  	         Role role = (Role)roles[0];
+  	         String userRole = role.getRole();
+  	         if(userRole.equals("AGENT"))
+  	        	 la.add(user);
     		
-    		lp = null;
     	}
-        model.addAttribute("agents",lp);
-        model.addAttribute("nbAgents", nbAgents);
-      
+   
+    	
+    	if(la.size()==0)
+    		la=null;
+    	model.addAttribute("nbr", la.size());
+        model.addAttribute("agents", la);
+    	
         return "agent/listAgents";
-        
-        //List<Provider> lp = (List<Provider>)providerRepository.findAll();
-        //System.out.println(lp);
-        
-        //return "Nombre de fournisseur = " + lp.size();
     }
     
     @GetMapping("add")
     public String showAddAgentForm(Model model) {
-    	Agent agent = new Agent();// object dont la valeur des attributs par defaut
-    	model.addAttribute("agent", agent);
+    	 User user = new User();
+         model.addAttribute("user", user);
         return "agent/addAgent";
     }
     
     @PostMapping("add")
-    public String addAgent(@Valid Agent agent, BindingResult result, Model model) {
+    public String addAgent(@Valid User user, BindingResult result, Model model) {
         if (result.hasErrors()) {
         	System.out.println(result);
             return "agent/addAgent";
         }
-        /*LocalDate ld = LocalDate.now();
-        Date d = new Date(System.currentTimeMillis());
-        agent.setDate(d);*/
-        agentRepository.save(agent);
+        userService.saveUser(user,"AGENT",1);
         return "redirect:list";
     }
 

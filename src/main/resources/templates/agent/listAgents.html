@@ -44,39 +44,51 @@
 								<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 									<thead>
 										<tr>
-											<th>Matricule</th>
+											<!--<th>Matricule</th>
 											<th>Nom</th>
 											<th>Prénom</th>
 											<th>Adresse</th>
 											<th>Téléphone</th>
 											<th>Date de début de contrat</th>
 											<th>Modifier</th>
-											<th>Supprimer</th>
+											<th>Supprimer</th>-->
+											<th>ID</th>
+										    <th>First Name</th>
+										    <th>Last Name</th>
+										    <th>Email</th>
 										</tr>
 									</thead>
 									<tfoot>
 										<tr>
-											<th>Matricule</th>
+											<!--<th>Matricule</th>
 											<th>Nom</th>
 											<th>Prénom</th>
 											<th>Adresse</th>
 											<th>Téléphone</th>
 											<th>Date de début de contrat</th>
 											<th>Modifier</th>
-											<th>Supprimer</th>
+											<th>Supprimer</th>-->
+											<th>ID</th>
+										    <th>First Name</th>
+										    <th>Last Name</th>
+										    <th>Email</th>
 										</tr>
 									</tfoot>
 									<tbody>
 										<tr>
 											<tr th:each="agent : ${agents}">
-												<td th:text="${agent.matricule}"></td>
+												<!--<td th:text="${agent.matricule}"></td>
 												<td th:text="${agent.nom}"></td>
 												<td th:text="${agent.prenom}"></td>
 												<td th:text="${agent.address}"></td>
 												<td th:text="${agent.telephone}"></td>
 												<td th:text="${agent.date}"></td>
 												<td><a th:href="@{/agent/edit/{id}(id=${agent.id})}" class="btn btn-warning"><i class="fas fa-user-edit ml-2"></i></a></td>
-												<td><a th:href="@{/agent/delete/{id}(id=${agent.id})}" class="btn btn-danger"><i class="fas fa-user-times ml-2"></i></a></td>
+												<td><a th:href="@{/agent/delete/{id}(id=${agent.id})}" class="btn btn-danger"><i class="fas fa-user-times ml-2"></i></a></td>-->
+										<td th:text="${agent.id}"></td>
+										<td th:text="${agent.name}"></td>
+										<td th:text="${agent.lastName}"></td>
+										<td th:text="${agent.email}"></td>
 										</tr>
 									</tbody>
 								</table>
