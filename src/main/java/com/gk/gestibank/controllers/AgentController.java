@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.mail.javamail.JavaMailSender;
 
 import com.gk.gestibank.entities.Agent;
 import com.gk.gestibank.entities.Role;
@@ -35,6 +37,10 @@ public class AgentController {
 	@Autowired
     private UserService userService;
 	
+	@Autowired
+    private JavaMailSender javaMailSender;
+
+	
     @Autowired
     public AgentController(AgentRepository agentRepository) {
         this.agentRepository = agentRepository;
@@ -53,17 +59,17 @@ public class AgentController {
     	{
     		 Set<Role>userRoles = user.getRoles();
     		 Object roles[] = userRoles.toArray();
-  	         Role role = (Role)roles[0];
+  	         Role role = (Role)roles[0]; 
   	         String userRole = role.getRole();
   	         if(userRole.equals("AGENT"))
   	        	 la.add(user);
     		
     	}
-   
-    	
-    	if(la.size()==0)
-    		la=null;
-    	model.addAttribute("nbr", la.size());
+    	if(la.size()==0) {
+    				la=null;			
+    	}
+    
+    	//model.addAttribute("nbr", la.size());
         model.addAttribute("agents", la);
     	
         return "agent/listAgents";
@@ -77,12 +83,18 @@ public class AgentController {
     }
     
     @PostMapping("add")
-    public String addAgent(@Valid User user, BindingResult result, Model model) {
+    public String addAgent(@Valid User user, BindingResult result) {
         if (result.hasErrors()) {
         	System.out.println(result);
             return "agent/addAgent";
         }
+        
         userService.saveUser(user,"AGENT",1);
+        
+        System.out.println(userService.toString());
+       
+    //    sendEmail("boulongnecorentin@gmail.com", true);
+        
         return "redirect:list";
     }
 
@@ -126,4 +138,29 @@ public class AgentController {
     	return"redirect:list";
     	
     }
-}
+    
+    
+    public void sendEmail(String email, boolean state)
+    {
+ 
+    	SimpleMailMessage msg = new SimpleMailMessage();
+        msg.setTo(email);
+        if(state == true)
+        {
+        msg.setSubject("Account Has Been Activated");
+        msg.setText("Hello, Your account has been activated. "
+        		+ 
+        		"You can log in : http://127.0.0.1:8081/login"
+        		+ " \n Best Regards!");
+        }
+        else
+        {
+        	msg.setSubject("Account Has Been disactivated");
+            msg.setText("Hello, Your account has been disactivated.");
+        }
+        javaMailSender.send(msg);
+
+    }
+
+    }
+    
