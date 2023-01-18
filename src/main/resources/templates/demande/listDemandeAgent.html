@@ -68,7 +68,7 @@
 													<td th:text="${client.email}"></td>
 													<td th:text="${client.active} ? 'ACTIF' : 'INACTIF'"></td>
 													<td th:switch="${client.active}">
-														<a th:href="@{/demande/{id}(id=${client.id})}" th:case="0"
+														<a th:href="@{/user/enable/{id}/{email}(id=${client.id}, email=${client.email}) }" th:case="0"
 															class="btn btn-primary">Valider<i
 																class="fas fa-user-show ml-2"></i></a>
 														<span th:case="1">Validé</span>

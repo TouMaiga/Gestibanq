@@ -104,7 +104,7 @@ public class UserController {
 		 User user = userRepository.findById(id).orElseThrow(()->new IllegalArgumentException("Invalid User Id:" + id));
 	     user.setActive(1);
 	     userRepository.save(user);
-    	return "redirect:../../list";
+    	return "redirect:../../../demande/agent/inscriptions";
     }
 
 	
