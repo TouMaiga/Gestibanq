@@ -1,10 +1,12 @@
 package com.gk.gestibank.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -38,6 +40,9 @@ public class Compte {
 	@NotBlank(message = "type is mandatory")
 	@Column(name = "type")
 	private String type;
+	
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	private User client;
 
 	public long getId() {
 		return id;
@@ -94,6 +99,14 @@ public class Compte {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	public User getClient() {
+		return client;
+	}
+
+	public void setClient(User client) {
+		this.client = client;
 	}
 
 }

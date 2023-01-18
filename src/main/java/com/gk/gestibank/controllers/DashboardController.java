@@ -126,6 +126,11 @@ public class DashboardController {
         
     }
     
+	@GetMapping("/devise")
+	public String dashbaordDevise(Model model) {
+		return "devise/devise";
+	}
+    
 
 	@GetMapping("/admin")
 	public String dashbaordAdmin(Model model) {
