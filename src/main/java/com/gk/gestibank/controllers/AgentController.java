@@ -92,9 +92,7 @@ public class AgentController {
         userService.saveUser(user,"AGENT",1);
         
         System.out.println(userService.toString());
-       
-    //    sendEmail("boulongnecorentin@gmail.com", true);
-        
+         
         return "redirect:list";
     }
 
