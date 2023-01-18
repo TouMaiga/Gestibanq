@@ -115,16 +115,16 @@ public class UserController {
         msg.setTo(email);
         if(state == true)
         {
-        msg.setSubject("Account Has Been Activated");
-        msg.setText("Hello, Your account has been activated. "
+        msg.setSubject("Votre compte est désormais activé !");
+        msg.setText("Bonjour, Votre compte à été activé. "
         		+ 
-        		"You can log in : http://127.0.0.1:8081/login"
-        		+ " \n Best Regards!");
+        		"Vous pouvez vous connecter à l'adresse suivante : http://127.0.0.1:8081/login"
+        		+ " \n Cordialement!");
         }
         else
         {
-        	msg.setSubject("Account Has Been disactivated");
-            msg.setText("Hello, Your account has been disactivated.");
+        	msg.setSubject("Votre compte à été désactivé.");
+            msg.setText("Bonjour, votre compte est désactivé pour le moment, Veuillez contacter l'administration.");
         }
         javaMailSender.send(msg);
 
