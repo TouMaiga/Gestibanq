@@ -2,6 +2,9 @@ package com.gk.gestibank.controllers;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,6 +26,9 @@ public class UserController {
 
 	private final UserRepository userRepository;
 	private final RoleRepository roleRepository;
+	
+	@Autowired
+    private JavaMailSender javaMailSender;
 
 	public UserController(UserRepository userRepository, RoleRepository roleRepository) {
 		this.userRepository = userRepository;
@@ -88,5 +94,40 @@ public class UserController {
 		userRepository.delete(user);
 		return "redirect:../list";
 	}
+	
+	@GetMapping("enable/{id}/{email}")
+	//@ResponseBody
+    public String enableUserAcount(@PathVariable ("id") int id, 
+    		@PathVariable ("email") String email) {
+    	
+		 sendEmail(email, true);
+		 User user = userRepository.findById(id).orElseThrow(()->new IllegalArgumentException("Invalid User Id:" + id));
+	     user.setActive(1);
+	     userRepository.save(user);
+    	return "redirect:../../list";
+    }
+
+	
+    public void sendEmail(String email, boolean state)
+    {
+ 
+    	SimpleMailMessage msg = new SimpleMailMessage();
+        msg.setTo(email);
+        if(state == true)
+        {
+        msg.setSubject("Account Has Been Activated");
+        msg.setText("Hello, Your account has been activated. "
+        		+ 
+        		"You can log in : http://127.0.0.1:8081/login"
+        		+ " \n Best Regards!");
+        }
+        else
+        {
+        	msg.setSubject("Account Has Been disactivated");
+            msg.setText("Hello, Your account has been disactivated.");
+        }
+        javaMailSender.send(msg);
+
+    }
 
 }
