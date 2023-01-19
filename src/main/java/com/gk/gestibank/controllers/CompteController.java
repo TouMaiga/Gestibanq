@@ -129,7 +129,7 @@ public class CompteController {
 
 		compteRepository.save(compte);
 
-		return "redirect:list";
+		return "redirect:./client/list";
 	}
 
 	@GetMapping("delete/{id}")
