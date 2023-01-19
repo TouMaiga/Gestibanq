@@ -33,21 +33,21 @@
                 <div th:switch="${actualities}" class="container my-5">
                     <p class="my-5">
                       <a th:href="@{'/actuality/add'}" class="btn btn-primary"><i
-							class="fas fa-user-plus ml-2"> Add Actuality</i></a>
+							class="fas fa-user-plus ml-2">Ajouter une actualité</i></a>
                     </p>
                     <div class="col-md-10">
-                        <h2 th:case="null">Opp, No Actualities yet!!!</h2>
+                        <h2 th:case="null">Il n'y a pas d'actualités pour le moment!</h2>
                         <div th:case="*">
                            <div class="card-body">
 									<div class="table-responsive">
 										<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
+                                        <th>Nom</th>
                                         <th>Contenu</th>
                                         <th>Détails</th>                                      
-                                      	<th>Edit</th>
-                                        <th>Delete</th>
+                                      	<th>Modifier</th>
+                                        <th>Supprimer</th>
                                     </tr>
                                 </thead>
                                 <tbody>

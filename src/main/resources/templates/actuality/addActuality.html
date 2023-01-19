@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Add Actuality</title>
+    <title>Ajouter une Actualité</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
@@ -28,14 +28,14 @@
 				<div th:replace="fragments/navbar :: navbar" />
 				<!-- End of Topbar -->
     <div class="container my-5">
-        <h3> Add Actuality</h3>
+        <h3> Ajouter une Actualité</h3>
         <div class="card">
             <div class="card-body">
                 <div class="col-md-10">
                     <form action="#" th:action="@{/actuality/add}" th:object="${actuality}" method="post" enctype="multipart/form-data">
                         <div class="row">
                             <div class="form-group col-md-8">
-                                <label for="name" class="col-form-label">Name</label> <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Name"> <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span>
+                                <label for="name" class="col-form-label">Nom</label> <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Name"> <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span>
                             </div>
 
 	     
@@ -52,7 +52,7 @@
 	</div>
 	                            
     <div class="col-md-6">
-        <input type="submit" class="btn btn-primary" value="Add Actuality">
+        <input type="submit" class="btn btn-primary" value="Ajouter une actualité">
     </div>
 	
     <div class="form-group col-md-8"></div>

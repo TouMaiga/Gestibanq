@@ -48,15 +48,9 @@ public class ConfigController {
 	    		lp = null;
 	    	}
 	        model.addAttribute("configs",lp);
-	        
-	       
-	        
+
 	        return "config/listConfigs";
 	        
-	        //List<Provider> lp = (List<Provider>)providerRepository.findAll();
-	        //System.out.println(lp);
-	        
-	        //return "Nombre de fournisseur = " + lp.size();
 	    }
 	    
 	    @GetMapping("add")
@@ -85,9 +79,7 @@ public class ConfigController {
 	        e.printStackTrace();
 	        }
 	        config.setLogo(fileName.toString());
-	        /*LocalDate ld = LocalDate.now();
-	        Date d = new Date(System.currentTimeMillis());
-	        config.setDate(d);*/
+
 	        configRepository.save(config);
 	        return "redirect:list";
 	    }
@@ -96,9 +88,6 @@ public class ConfigController {
 	    @GetMapping("delete/{id}")
 	    public String deleteConfig(@PathVariable("id") long id, Model model) {
 	    	
-	    	
-	    	//long id2 = 100L;
-	    	
 	        Config config = configRepository.findById(id)
 	            .orElseThrow(()-> new IllegalArgumentException("Invalid config Id:" + id));
 	        
@@ -106,8 +95,6 @@ public class ConfigController {
 	        
 	        configRepository.delete(config);
 	        
-	        /*model.addAttribute("providers", providerRepository.findAll());
-	        return "provider/listProviders";*/
 	        return "redirect:../list";
 	    }
 	    
@@ -141,14 +128,10 @@ public class ConfigController {
 	         	 config.setId(id);
 	             return "config/updateConfig";
 	         }
-	         //System.out.println("image = " +article.getPicture());
-	     	
-	     	/// part upload file
-	     
-	     		
+	
 	     	StringBuilder fileName = new StringBuilder();
 	     	MultipartFile file = files[0];
-	     	//System.out.println(file.isEmpty());
+	     	
 	     	if(!file.isEmpty()) {
 	     	Path fileNameAndPath = Paths.get(uploadDirectory, file.getOriginalFilename());
 	     	
@@ -161,9 +144,6 @@ public class ConfigController {
 	 		  config.setLogo(fileName.toString());
 	     	}
 	 		
-	     	
-	     	// Fin Upload file
-	    	
 	
 	    	configRepository.save(config);
 	    	return"redirect:../list";

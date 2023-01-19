@@ -59,8 +59,8 @@
 					<h1 class="h3 mb-2 text-gray-800">Liste des messages</h1> 
 					
 					 <div th:switch="${messages}">
-					<p class="mb-4">Pour ajouter un nouveau message cliquer ici <a class="btn btn-primary"
-							th:href="@{/add}">Ajouter</a></p>
+					<p class="mb-4">Pour ajouter un nouveau message cliquez ici <a class="btn btn-primary"
+							th:href="@{add}">Ajouter</a></p>
 
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
@@ -75,14 +75,14 @@
                                 <thead>
                                     <tr>
                                         
-                                        <th>FirstName</th>
-                                        <th>LarstName</th>
+                                        <th>Prénom</th>
+                                        <th>Nom</th>
                                         <th>Email</th>
                                         <th>Sujet</th>
                                         <th>Contenu</th> 
-                                        <th>Reponse</th>                                       
-                                          <th>Edit</th>
-                                        <th>Delete</th>
+                                        <th>Réponse</th>                                       
+                                        <th>Modifier</th>
+                                        <th>Supprimer</th>
                                     </tr>
                                 </thead>
                                 <tbody>

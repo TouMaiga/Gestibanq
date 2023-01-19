@@ -98,7 +98,7 @@ public class CompteController {
 
 		compteRepository.save(compte);
 
-		return "redirect:list";
+		return "redirect:./client/list";
 	}
 
 	@GetMapping("delete/{id}")
@@ -123,9 +123,9 @@ public class CompteController {
 
 		return "compte/updateCompte";
 	}
-
+	
 	@PostMapping("update")
-	public String updateAgent(@Valid Compte compte, BindingResult result, Model model) {
+	public String updateCompte(@Valid Compte compte, BindingResult result, Model model) {
 
 		compteRepository.save(compte);
 		return "redirect:list";
