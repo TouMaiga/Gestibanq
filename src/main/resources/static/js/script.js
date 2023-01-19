@@ -3,6 +3,7 @@ fromCurrency = document.querySelector(".from select"),
 toCurrency = document.querySelector(".to select"),
 getButton = document.querySelector("form button");
 
+
 for (let i = 0; i < dropList.length; i++) {
     for(let currency_code in country_list){
         let selected = i == 0 ? currency_code == "USD" ? "selected" : "" : currency_code == "NPR" ? "selected" : "";
@@ -18,7 +19,8 @@ function loadFlag(element){
     for(let code in country_list){
         if(code == element.value){
             let imgTag = element.parentElement.querySelector("img");
-            imgTag.src = `https://flagcdn.com/48x36/${country_list[code]}.png`;
+            imgTag.src = `https://countryflagsapi.com/svg/${country_list[code]}/`;
+            
         }
     }
 }
