@@ -7,7 +7,7 @@ services:
   spring:
     image: cboulong/gestibank_app
     ports:
-      - "8887:8888"
+      - "9003:8080"
     container_name: gestibank_cont
     depends_on:
       - database
