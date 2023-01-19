@@ -2,14 +2,11 @@ package com.gk.gestibank.controllers;
 
 import java.security.Principal;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
 import javax.validation.Valid;
 
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,9 +16,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.gk.gestibank.entities.Compte;
 import com.gk.gestibank.entities.Demande;
 import com.gk.gestibank.entities.Role;
 import com.gk.gestibank.entities.User;
+import com.gk.gestibank.repositories.CompteRepository;
 import com.gk.gestibank.repositories.DemandeRepository;
 import com.gk.gestibank.repositories.UserRepository;
 import com.gk.gestibank.services.UserService;
@@ -33,12 +32,14 @@ public class DemandeController {
 	private final DemandeRepository demandeRepository;
 	private final UserRepository userRepository;
 	private final UserService userService;
+	private final CompteRepository compteRepository;
 
 	public DemandeController(DemandeRepository demandeRepository, UserRepository userRepository,
-			UserService userService) {
+			UserService userService, CompteRepository compteRepository) {
 		this.demandeRepository = demandeRepository;
 		this.userRepository = userRepository;
 		this.userService = userService;
+		this.compteRepository = compteRepository;
 	}
 
 	@GetMapping("list")
@@ -65,6 +66,34 @@ public class DemandeController {
 		model.addAttribute("agents", agents);
 
 		return "demande/listDemande";
+
+	}
+
+	@GetMapping("/client/list")
+	public String listDemandesClient(Model model, Principal principal) {
+
+		String name = principal.getName();
+
+		List<Demande> demandes = demandeRepository.findAll();
+		
+		List<Demande> demandeClients = new ArrayList<>();
+		
+		
+		if (name != null) {
+			User user = userRepository.findByEmail(name);
+			for (Demande d : demandes) {
+				Compte cptDmd = d.getCompte();
+				if (cptDmd != null ) {
+					if (cptDmd.getClient() != null && cptDmd.getClient().getId() == user.getId()) {
+						demandeClients.add(d);
+					}
+				}
+			}
+		}
+
+		model.addAttribute("demandes", demandeClients);
+
+		return "demande/listDemandeClient";
 
 	}
 
@@ -111,20 +140,44 @@ public class DemandeController {
 	}
 
 	@GetMapping("add")
-	public String addDemande(Model model) {
+	public String addDemande(Model model, Principal principal) {
 		Demande demande = new Demande();
 		model.addAttribute("demande", demande);
+
+		String name = principal.getName();
+
+		List<Compte> comptes = (List<Compte>) compteRepository.findAll();
+
+		List<Compte> comptesDuClient = new ArrayList<>();
+
+		if (name != null) {
+			User user = userRepository.findByEmail(name);
+			for (Compte cpt : comptes) {
+				User client = cpt.getClient();
+				if (client != null && client.getId() == user.getId()) {
+					comptesDuClient.add(cpt);
+				}
+			}
+		}
+
+		model.addAttribute("comptes", comptesDuClient);
 		return "demande/addDemande";
 	}
 
 	@PostMapping("add")
-	public String adddemande(@Valid Demande demande, BindingResult result, Model model) {
+	public String adddemande(@Valid Demande demande, BindingResult result, Model model, Principal principal,
+			@RequestParam("compte") long compteId) {
 		if (result.hasErrors()) {
 			return "demande/addDemande";
 		}
 
+		Compte compte = compteRepository.findById(compteId)
+				.orElseThrow(() -> new IllegalArgumentException("Invalid compte id : " + compteId));
+
+		demande.setEtat("Nouveau");
+		demande.setCompte(compte);
 		demandeRepository.save(demande);
-		return "redirect:list";
+		return "redirect:client/list";
 	}
 
 	@PostMapping("affect")
@@ -136,10 +189,11 @@ public class DemandeController {
 		userRepository.save(agent);
 		return "redirect:inscriptions";
 	}
-	
+
 	@GetMapping("/{id}")
 	public String validerDemande(@PathVariable("id") int id) {
-		User user = userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+		User user = userRepository.findById(id)
+				.orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
 		user.setActive(1);
 		userRepository.save(user);
 		return "redirect:agent/inscriptions";

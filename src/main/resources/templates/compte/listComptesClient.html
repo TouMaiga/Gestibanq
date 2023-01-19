@@ -38,11 +38,11 @@
 					<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-2 text-gray-800">Liste des comptes</h1> 
+					<h1 class="h3 mb-2 text-gray-800">Mes comptes bancaires</h1> 
 					
 					 <div th:switch="${comptes}">
-					<p class="mb-4">Ouvrir un nouveau compte <a class="btn btn-primary"
-							th:href="@{add}">Ouvrir</a></p>
+					<!-- <p class="mb-4">Ouvrir un nouveau compte <a class="btn btn-primary"
+							th:href="@{add}">Ouvrir</a></p>-->
 
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
@@ -63,8 +63,8 @@
                                         <th>Solde</th>
                                         <th>Numero Compte</th> 
                                         <th>Type</th>                                       
-                                          <th>Edit</th>
-                                        <th>Delete</th>
+                                         <!-- <th>Edit</th>
+                                        <th>Delete</th> -->
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -75,8 +75,8 @@
                                         <td th:text="${compte.solde}"></td>
                                         <td th:text="${compte.numeroCompte}"></td>
                                         <td th:text="${compte.type}"></td>                                        
-                                        <td><a th:href="@{/compte/edit/{id}(id=${compte.id})}" class="btn btn-warning"><i class="fas fa-user-edit ml-2"></i></a></td>
-                                        <td><a th:href="@{/compte/delete/{id}(id=${compte.id})}" class="btn btn-danger"><i class="fas fa-user-times ml-2"></i></a></td>
+                                        <!-- <td><a th:href="@{/compte/edit/{id}(id=${compte.id})}" class="btn btn-warning"><i class="fas fa-user-edit ml-2"></i></a></td>
+                                        <td><a th:href="@{/compte/delete/{id}(id=${compte.id})}" class="btn btn-danger"><i class="fas fa-user-times ml-2"></i></a></td> -->
                                     </tr>
                                 </tbody>
                             </table>

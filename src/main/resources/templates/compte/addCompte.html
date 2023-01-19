@@ -60,28 +60,13 @@
 											<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
 												class="text-danger"></span>
 										</div>
-
-
-										<div class="form-group col-md-8">
-
-											<label for="sujet" class="col-form-label">Solde</label> <input type=""
-												th:field="*{solde}" class="form-control" id="solde" placeholder="Solde">
-											<span th:if="${#fields.hasErrors('solde')}" th:errors="*{solde}"
-												class="text-danger"></span>
-										</div>
 										
 										<div class="form-group col-md-8">
-
-											<label for="sujet" class="col-form-label">Numéro de compte</label> <input type="text"
-												th:field="*{numeroCompte}" class="form-control" id="numeroCompte" placeholder="Numéro de compte">
-											<span th:if="${#fields.hasErrors('numeroCompte')}" th:errors="*{numeroCompte}"
-												class="text-danger"></span>
-										</div>
-										
-										<div class="form-group col-md-8">
-
-											<label for="sujet" class="col-form-label">Type</label> <input type="text"
-												th:field="*{type}" class="form-control" id="type" placeholder="Type">
+											<label for="type" class="col-form-label">Type</label> 
+											<select th:field="*{type}" class="form-control" id="type">
+												<option th:value="COURANT" th:text="COURANT"></option>
+												<option th:value="EPARGNE" th:text="EPARGNE"></option>
+											</select>
 											<span th:if="${#fields.hasErrors('type')}" th:errors="*{type}"
 												class="text-danger"></span>
 										</div>
