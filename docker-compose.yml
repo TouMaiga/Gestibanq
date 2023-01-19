@@ -5,7 +5,7 @@ version: '3.3'
 services:
   # spring service
   spring:
-    image: cboulong/gestibank_app
+    image: gestibank_app
     ports:
       - "9003:8080"
     container_name: gestibank_cont
