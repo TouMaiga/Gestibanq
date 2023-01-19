@@ -24,6 +24,12 @@ agent any
 					
 
           }
+          stage('run docker-compose : par groupe 3') {
+		   steps {
+				sh 'docker-compose up -d'
+			}
+
+		}
 
 		  
      }
