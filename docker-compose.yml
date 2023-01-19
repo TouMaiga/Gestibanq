@@ -7,7 +7,7 @@ services:
   spring:
     image: gestibank_app
     ports:
-      - "9003:8080"
+      - "9003:8081"
     container_name: gestibank_cont
     depends_on:
       - database
