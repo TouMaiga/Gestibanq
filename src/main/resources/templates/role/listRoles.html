@@ -40,10 +40,10 @@
 				<div th:switch="${roles}" class="container my-5">
 					<p class="my-5">
 						<a th:href="@{'/role/add'}" class="btn btn-primary">
-						<i class="fas fa-user-plus ml-2"> Add Role</i></a>
+						<i class="fas fa-user-plus ml-2"> Ajouter un role</i></a>
 					</p>
 					<div class="col-md-10">
-						<h2 th:case="null">No Role yet!</h2>
+						<h2 th:case="null">Aucun role pour le moment!</h2>
 						<div th:case="*">
 						
 						<h2>Nombre total de role= <span th:text="${nbr}">10</span></h2>

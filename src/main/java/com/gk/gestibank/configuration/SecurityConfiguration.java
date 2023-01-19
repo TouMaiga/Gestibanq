@@ -42,8 +42,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").permitAll() // accès pour tous users
                 .antMatchers("/login").permitAll() // accès pour tous users
                 .antMatchers("/registration").permitAll() // accès pour tous users
-          
+                .antMatchers("/devise").permitAll()
+                .antMatchers("/agent/**").hasAuthority("AGENT")
+                .antMatchers("/client/**").hasAuthority("CLIENT")
                 .antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
+             
                 //.antMatchers("/").hasAuthority("USER")
                 .authenticated().and().csrf().disable().formLogin() // l'accès de fait via un formulaire
                 
@@ -54,8 +57,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .passwordParameter("password")
                 .and().logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout")) // route de deconnexion ici /logut
-                .logoutSuccessUrl("/login").and().exceptionHandling(); // une fois deconnecté redirection vers login
-               // .accessDeniedPage("/403"); 
+                .logoutSuccessUrl("/login").and().exceptionHandling() // une fois deconnecté redirection vers login
+               .accessDeniedPage("/403"); 
     }
 
    // laisser l'accès aux ressources

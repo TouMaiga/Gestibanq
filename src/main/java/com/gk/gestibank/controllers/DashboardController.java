@@ -130,6 +130,11 @@ public class DashboardController {
 	public String dashbaordDevise(Model model) {
 		return "devise/devise";
 	}
+	
+	@GetMapping("/403")
+	public String forbiddenPage(Model model) {
+		return "/403";
+	}
     
 
 	@GetMapping("/admin")

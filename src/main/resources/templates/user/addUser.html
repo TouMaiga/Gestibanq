@@ -38,7 +38,7 @@
 									<div class="row">
 										<div class="form-group col-md-8">
 
-											<label for="firstname" class="col-form-label">FirstName</label> <input
+											<label for="firstname" class="col-form-label">Prénom</label> <input
 												type="text" th:field="*{name}" class="form-control" id="name"
 												placeholder="Name"> <span th:if="${#fields.hasErrors('name')}"
 												th:errors="*{name}" class="text-danger"></span>
@@ -46,7 +46,7 @@
 
 										<div class="form-group col-md-8">
 
-											<label for="lastname" class="col-form-label">LastName</label> <input
+											<label for="lastname" class="col-form-label">Nom</label> <input
 												type="text" th:field="*{lastName}" class="form-control" id="lastName"
 												placeholder="LastName"> <span th:if="${#fields.hasErrors('lastName')}"
 												th:errors="*{lastName}" class="text-danger"></span>
@@ -64,7 +64,7 @@
 
 										<div class="form-group col-md-8">
 
-											<label for="password" class="col-form-label">Password</label> 
+											<label for="password" class="col-form-label">Mot de passe</label> 
 											<input type="password" th:field="*{password}" class="form-control" id="password" placeholder="Password">
 											<span th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-danger"></span>
 										</div>
