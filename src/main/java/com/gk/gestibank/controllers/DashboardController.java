@@ -133,7 +133,7 @@ public class DashboardController {
 	
 	@GetMapping("/403")
 	public String forbiddenPage(Model model) {
-		return "/403";
+		return "403";
 	}
     
 
