@@ -123,9 +123,18 @@ public class CompteController {
 
 		return "compte/updateCompte";
 	}
+	
+	@GetMapping("virement")
+	public String showVirementFrom(Model model) {
 
+		
+
+		return "compte/virement";
+
+	}
+	
 	@PostMapping("update")
-	public String updateAgent(@Valid Compte compte, BindingResult result, Model model) {
+	public String updateCompte(@Valid Compte compte, BindingResult result, Model model) {
 
 		compteRepository.save(compte);
 		return "redirect:list";

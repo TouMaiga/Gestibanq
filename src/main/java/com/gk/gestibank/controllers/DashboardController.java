@@ -66,13 +66,13 @@ public class DashboardController {
 
 		if (userExists != null) {
 			bindingResult.rejectValue("email", "error.user",
-					"There is already a user registered with the email provided");
+					"Cet adresse mail est déjà utilisée");
 		}
 		if (bindingResult.hasErrors()) {
 			modelAndView.setViewName("registration");
 		} else {
 			userService.saveUser(user,"CLIENT", 0);
-			modelAndView.addObject("successMessage", "User has been registered successfully");
+			modelAndView.addObject("successMessage", "Votre compte à été créé, vous receverai un mail quand il sera activé.");
 			modelAndView.addObject("user", new User());
 			modelAndView.setViewName("registration");
 		}
