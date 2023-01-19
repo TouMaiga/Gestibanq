@@ -18,6 +18,7 @@ public class Demande {
 	private String contenu;
 	private String date;
 	private String etat;
+	private Integer active = 0;
 	
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private Compte compte;
@@ -82,6 +83,15 @@ public class Demande {
 
 	public void setEtat(String etat) {
 		this.etat = etat;
+	}
+	
+
+	public Integer getActive() {
+		return active;
+	}
+
+	public void setActive(Integer active) {
+		this.active = active;
 	}
 
 	public Compte getCompte() {

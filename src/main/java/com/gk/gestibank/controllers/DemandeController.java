@@ -75,15 +75,14 @@ public class DemandeController {
 		String name = principal.getName();
 
 		List<Demande> demandes = demandeRepository.findAll();
-		
+
 		List<Demande> demandeClients = new ArrayList<>();
-		
-		
+
 		if (name != null) {
 			User user = userRepository.findByEmail(name);
 			for (Demande d : demandes) {
 				Compte cptDmd = d.getCompte();
-				if (cptDmd != null ) {
+				if (cptDmd != null) {
 					if (cptDmd.getClient() != null && cptDmd.getClient().getId() == user.getId()) {
 						demandeClients.add(d);
 					}
@@ -135,8 +134,46 @@ public class DemandeController {
 
 		model.addAttribute("clients", clients);
 
+		return "demande/listInscription";
+
+	}
+
+	@GetMapping("/agent/list")
+	public String listDemandeAgent(Model model, Principal principal) {
+
+		String name = principal.getName();
+
+		List<Demande> demandes = demandeRepository.findAll();
+
+		List<Demande> demandeClients = new ArrayList<>();
+
+		if (name != null) {
+			User agent = userRepository.findByEmail(name);
+			for (Demande d : demandes) {
+				Compte cptDmd = d.getCompte();
+				for (User user : agent.getInscriptions()) {
+					if (cptDmd != null) {
+						if (cptDmd.getClient() != null && cptDmd.getClient().getId() == user.getId()) {
+							demandeClients.add(d);
+						}
+					}
+				}
+			}
+		}
+
+		model.addAttribute("demandes", demandeClients);
+
 		return "demande/listDemandeAgent";
 
+	}
+
+	@GetMapping("/agent/{id}")
+	public String agentValiderDemande(@PathVariable("id") int id) {
+		Demande demande = demandeRepository.findById(id)
+				.orElseThrow(() -> new IllegalArgumentException("Invalid demande id : " + id));
+		demande.setActive(1);
+		demandeRepository.save(demande);
+		return "redirect:list";
 	}
 
 	@GetMapping("add")

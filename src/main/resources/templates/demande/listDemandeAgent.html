@@ -1,25 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
+
 	<div th:replace="fragments/header :: header" />
+
 </head>
 
-<body id="page-top">
-
-	<!-- Page Wrapper -->
+<body>
 	<div id="wrapper">
 
-		<div sec:authorize="hasAuthority('ADMIN')">
-
-			<div th:replace="fragments/sidebar :: sidebar"></div>
-
-		</div>
-		<div sec:authorize="hasAuthority('AGENT')">
-
-			<div th:replace="fragments/sidebarAgent :: sidebarAgent"></div>
-
-		</div>
+		<div th:replace="fragments/sidebarAgent :: sidebarAgent"></div>
 
 		<!-- Content Wrapper -->
 		<div id="content-wrapper" class="d-flex flex-column">
@@ -31,98 +22,100 @@
 				<div th:replace="fragments/navbar :: navbar" />
 				<!-- End of Topbar -->
 
-				<!-- Begin Page Content -->
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-2 text-gray-800" sec:authorize="hasAuthority('AGENT')">Mes clients</h1>
+					<h1 class="h3 mb-2 text-gray-800">Mes demandes</h1>
 
-					<div th:switch="${clients}">
-
+					<div th:switch="${demandes}">
+						<!-- <p class="mb-4">Ouvrir un nouveau compte <a class="btn btn-primary"
+							th:href="@{add}">Ouvrir</a></p>-->
 
 						<!-- DataTales Example -->
 						<div class="card shadow mb-4">
 							<div class="card-header py-3">
-								<h6 class="m-0 font-weight-bold text-primary">Client</h6>
+								<h6 class="m-0 font-weight-bold text-primary"> Demandes</h6>
 							</div>
-							<h2 th:case="null">Aucune inscription pour le moment!</h2>
+							<h2 th:case="null">Aucune demande pour le moment!</h2>
 							<div th:case="*">
 								<div class="card-body">
 									<div class="table-responsive">
 										<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 											<thead>
 												<tr>
-													<th>Nom</th>
-													<th>Prenom</th>
-													<th>Email</th>
-													<th>Actif</th>
+													<th>Compte</th>
+													<th>sujet</th>
+													<th>Type</th>
+													<th>Contenu</th>
+													<th>Date</th>
+													<th>Statut</th>
 													<th>Valider</th>
 												</tr>
 											</thead>
 											<tbody>
-												<tr>
-
-												<tr th:each="client : ${clients}">
-													<td th:text="${client.lastName}"></td>
-													<td th:text="${client.name}"></td>
-													<td th:text="${client.email}"></td>
-													<td th:text="${client.active} ? 'ACTIF' : 'INACTIF'"></td>
-													<td th:switch="${client.active}">
-														<a th:href="@{/user/enable/{id}/{email}(id=${client.id}, email=${client.email}) }" th:case="0"
-															class="btn btn-primary">Valider<i
+												<tr th:each="demande : ${demandes}">
+													<td th:text="${demande.id}"></td>
+													<td th:text="${demande.sujet}"></td>
+													<td th:text="${demande.type}"></td>
+													<td th:text="${demande.contenu}"></td>
+													<td th:text="${demande.date}"></td>
+													<td th:text="${demande.etat}"></td>
+													<td th:switch="${demande.active}">
+														<a th:href="@{/demande/agent/{id}(id=${demande.id}) }"
+															th:case="0" class="btn btn-primary">Valider<i
 																class="fas fa-user-show ml-2"></i></a>
-														<span th:case="1">Validé</span>
-													</td>
-
+														<a th:href="@{/demande/agent/{id}(id=${demande.id}) }"
+															th:case="null" class="btn btn-primary">Valider<i
+																class="fas fa-user-show ml-2"></i></a>
+														<span th:case="1">Validée</span>
 													</td>
 												</tr>
 											</tbody>
 										</table>
 									</div>
+
 								</div>
 							</div>
 						</div>
 					</div>
-					<!-- /.container-fluid -->
-					<!-- /.container-fluid -->
-
 				</div>
-				<!-- End of Main Content -->
-
-				<!-- Footer -->
-				<div th:replace="fragments/footer :: footer" />
-				<!-- End of Footer -->
-
 			</div>
-			<!-- End of Content Wrapper -->
+			<!-- End of Main Content -->
+
+			<!-- Footer -->
+			<div th:replace="fragments/footer :: footer" />
+			<!-- End of Footer -->
 
 		</div>
-		<!-- End of Page Wrapper -->
+		<!-- End of Content Wrapper -->
 
-		<!-- Scroll to Top Button-->
-		<a class="scroll-to-top rounded" href="#page-top">
-			<i class="fas fa-angle-up"></i>
-		</a>
+	</div>
+	<!-- End of Page Wrapper -->
 
-		<!-- Logout Modal-->
-		<div th:replace="fragments/logoutmodal :: logoutmodal" />
+	<!-- Scroll to Top Button-->
+	<a class="scroll-to-top rounded" href="#page-top">
+		<i class="fas fa-angle-up"></i>
+	</a>
 
-		<!-- Bootstrap core JavaScript-->
-		<script th:src="@{/back/vendor/jquery/jquery.min.js}"></script>
-		<script th:src="@{/back/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+	<!-- Logout Modal-->
+	<div th:replace="fragments/logoutmodal :: logoutmodal" />
 
-		<!-- Core plugin JavaScript-->
-		<script th:src="@{/back/vendor/jquery-easing/jquery.easing.min.js}"></script>
+	<!-- Bootstrap core JavaScript-->
+	<script th:src="@{/back/vendor/jquery/jquery.min.js}"></script>
+	<script th:src="@{/back/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
 
-		<!-- Custom scripts for all pages-->
-		<script th:src="@{/back/js/sb-admin-2.min.js}"></script>
+	<!-- Core plugin JavaScript-->
+	<script th:src="@{/back/vendor/jquery-easing/jquery.easing.min.js}"></script>
 
-		<!-- Page level plugins -->
-		<script th:src="@{/back/vendor/chart.js/Chart.min.js}"></script>
+	<!-- Custom scripts for all pages-->
+	<script th:src="@{/back/js/sb-admin-2.min.js}"></script>
 
-		<!-- Page level custom scripts -->
-		<script th:src="@{/back/js/demo/chart-area-demo.js}"></script>
-		<script th:src="@{/back/js/demo/chart-pie-demo.js}"></script>
+	<!-- Page level plugins -->
+	<script th:src="@{/back/vendor/chart.js/Chart.min.js}"></script>
+
+	<!-- Page level custom scripts -->
+	<script th:src="@{/back/js/demo/chart-area-demo.js}"></script>
+	<script th:src="@{/back/js/demo/chart-pie-demo.js}"></script>
 
 </body>
 
