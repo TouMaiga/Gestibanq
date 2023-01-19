@@ -98,7 +98,7 @@ public class CompteController {
 
 		compteRepository.save(compte);
 
-		return "redirect:list";
+		return "redirect:./client/list";
 	}
 
 	@GetMapping("delete/{id}")
@@ -122,15 +122,6 @@ public class CompteController {
 		model.addAttribute("compte", compte);
 
 		return "compte/updateCompte";
-	}
-	
-	@GetMapping("virement")
-	public String showVirementFrom(Model model) {
-
-		
-
-		return "compte/virement";
-
 	}
 	
 	@PostMapping("update")
