@@ -41,6 +41,9 @@ public class Compte {
 	@Column(name = "type")
 	private String type;
 	
+	@Column(name = "active")
+	private Integer active = 0;
+	
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	private User client;
 
@@ -99,6 +102,15 @@ public class Compte {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+
+	public Integer getActive() {
+		return active;
+	}
+
+	public void setActive(Integer active) {
+		this.active = active;
 	}
 
 	public User getClient() {
