@@ -75,6 +75,37 @@ public class CompteController {
 
 	}
 
+	@GetMapping("agent/list")
+	public String listComptesAgent(Model model, Principal principal) {
+
+		String name = principal.getName();
+
+		
+
+		List<Compte> comptesDuClient = new ArrayList<>();
+
+		if (name != null) {
+			List<Compte> comptes = (List<Compte>) compteRepository.findAll();
+			User agent = userRepository.findByEmail(name);
+
+			List<User> clients = agent.getInscriptions();
+			for (Compte cpt : comptes) {
+				User client = cpt.getClient();
+				for (User clientAgent : clients) {
+					if (client != null && client.getId() == clientAgent.getId()) {
+						comptesDuClient.add(cpt);
+					}
+				}
+			}
+		}
+
+		model.addAttribute("comptes", comptesDuClient.isEmpty() ? null : comptesDuClient);
+		model.addAttribute("nbComptes", comptesDuClient.size());
+
+		return "compte/listComptesAgent";
+
+	}
+
 	@GetMapping("add")
 	public String showAddCompteForm(Model model) {
 		Compte compte = new Compte();// object dont la valeur des attributs par defaut
@@ -112,6 +143,17 @@ public class CompteController {
 		compteRepository.delete(compte);
 
 		return "redirect:../list";
+	}
+	
+	@GetMapping("valider/{id}")
+	public String validerComte(@PathVariable("id") long id, Model model) {
+		Compte compte = compteRepository.findById(id)
+				.orElseThrow(() -> new IllegalArgumentException("Invalid compte Id:" + id));
+
+		compte.setActive(1);
+		compteRepository.save(compte);
+
+		return "redirect:../agent/list";
 	}
 
 	@GetMapping("edit/{id}")

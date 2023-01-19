@@ -21,54 +21,66 @@
 				<!-- Topbar -->
 				<div th:replace="fragments/navbar :: navbar" />
 				<!-- End of Topbar -->
-
+				<!--<div class="container my-2">
+        <div class="card">
+            <div class="card-body">
+                <div th:switch="${messages}" class="container my-5">
+                    <p class="my-5">
+                      <a th:href="@{'/message/add'}" class="btn btn-primary"><i
+							class="fas fa-user-plus ml-2"> Add Message</i></a>
+                    </p>
+                    <div class="col-md-10">
+                        <h2 th:case="null">Opp, No Messages yet!!!</h2>
+                        <div th:case="*">
+                          <div class="card-body">
+									<div class="table-responsive">
+										<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0"> -->
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-2 text-gray-800">Mes demandes</h1>
+					<h1 class="h3 mb-2 text-gray-800">Mes comptes bancaires</h1>
 
-					<div th:switch="${demandes}">
+					<div th:switch="${comptes}">
 						<!-- <p class="mb-4">Ouvrir un nouveau compte <a class="btn btn-primary"
 							th:href="@{add}">Ouvrir</a></p>-->
 
 						<!-- DataTales Example -->
 						<div class="card shadow mb-4">
 							<div class="card-header py-3">
-								<h6 class="m-0 font-weight-bold text-primary"> Demandes</h6>
+								<h6 class="m-0 font-weight-bold text-primary"> Comptes</h6>
 							</div>
-							<h2 th:case="null">Aucune demande pour le moment!</h2>
+							<h2 th:case="null">Aucun compte pour le moment!</h2>
 							<div th:case="*">
 								<div class="card-body">
 									<div class="table-responsive">
 										<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 											<thead>
 												<tr>
-													<th>Client</th>
-													<th>Compte</th>
-													<th>sujet</th>
+													<th>Nom</th>
+													<th>Prenom</th>
+													<th>Email</th>
+													<th>Solde</th>
+													<th>Numero Compte</th>
 													<th>Type</th>
-													<th>Contenu</th>
-													<th>Date</th>
 													<th>Valider</th>
 												</tr>
 											</thead>
 											<tbody>
-												<tr th:each="demande : ${demandes}">
-													<td th:text="${demande.compte.client.lastName + ' ' + demande.compte.client.name}"></td>
-													<td th:text="${demande.compte.nom}"></td>
-													<td th:text="${demande.sujet}"></td>
-													<td th:text="${demande.type}"></td>
-													<td th:text="${demande.contenu}"></td>
-													<td th:text="${demande.date}"></td>
-													<!--<td th:text="${demande.etat}"></td>-->
-													<td th:switch="${demande.active}">
-														<a th:href="@{/demande/agent/{id}(id=${demande.id}) }"
-															th:case="0" class="btn btn-primary">Valider<i
+												<tr th:each="compte : ${comptes}">
+													<td th:text="${compte.nom}"></td>
+													<td th:text="${compte.prenom}"></td>
+													<td th:text="${compte.email}"></td>
+													<td th:text="${compte.solde}"></td>
+													<td th:text="${compte.numeroCompte}"></td>
+													<td th:text="${compte.type}"></td>
+													<td th:switch="${compte.active}">
+														<a th:href="@{/compte/valider/{id}(id=${compte.id}) }" th:case="0"
+															class="btn btn-primary">Valider<i
 																class="fas fa-user-show ml-2"></i></a>
-														<a th:href="@{/demande/agent/{id}(id=${demande.id}) }"
-															th:case="null" class="btn btn-primary">Valider<i
+														<a th:href="@{/compte/valider/{id}(id=${compte.id}) }" th:case="null"
+															class="btn btn-primary">Valider<i
 																class="fas fa-user-show ml-2"></i></a>
-														<span th:case="1">Validée</span>
+														<span th:case="1">Validé</span>
 													</td>
 												</tr>
 											</tbody>
